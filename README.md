@@ -1,2 +1,2 @@
 # 4MeWriter
-A silent notepad.
+A silent notepad, inspired by iA Writer.
