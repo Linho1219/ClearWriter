@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html data-blockbyte-bs-uid="86074">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="google-site-verification" content="YtWM4M2nBEPSKydE7uoS2RBqldiW4-RMDdVL1-rPGJc">
+    <title>4Me Writer</title>
+    <link rel="shortcut icon" href="http://write4me.sinaapp.com/favicon4me.png">
+    <link rel="stylesheet" href="./4Me_Writer_files/codemirror.css">
+    <script src="./4Me_Writer_files/codemirror.js"></script>
+    <script src="./4Me_Writer_files/xml.js"></script>
+    <script src="./4Me_Writer_files/markdown.js"></script>
+    <script src="./4Me_Writer_files/jquery.min.js"></script>
+    <script src="./4Me_Writer_files/jquery.fullscreen.js"></script>
+
+    <style id="control">
+        * {
+            --background:#f8f8f8;
+            --darkback:#eee;
+            --mainfont: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+            --selection: #ace8ff;
+            --main:#00BAFF;
+            --active:#333;
+            --line:#eee;
+            --com:#0001;
+        }
+    </style>
+    <style type="text/css">
+        *{
+            font-family: var(--mainfont);
+        }
+
+        *::selection {
+            background-color: var(--selection) !important;
+        }
+
+        *::-moz-selection {
+            background-color: var(--selection) !important;
+        }
+
+            *::-webkit-selection {
+                background-color: var(--selection) !important;
+            }
+
+        /*滚动条*/
+        ::-webkit-scrollbar {
+            width: 7px;
+            height: 7px;
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+        }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: rgba(0, 0, 0, 0.4);
+                transition: all 0.4s ease;
+            }
+
+            ::-webkit-scrollbar-thumb:active {
+                background-color: rgba(0, 0, 0, .56);
+                transition: all 0.4s ease;
+            }
+
+        #board {
+            height: 550px;
+        }
+
+        .CodeMirror {
+            line-height: 35px;
+            font-family: var(--mainfont),monospace;
+            font-size: 20px;
+            background: var(--background);
+            color: #aaa;
+            height: 550px;
+            margin-bottom: 30px;
+            margin-top: 100px;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        .activeline {
+            background: #00000005 !important;
+            color: var(--active) !important;
+        }
+
+        .CodeMirror-scroll {
+            height: 550px;
+        }
+
+        .CodeMirror-lines {
+            cursor: text;
+        }
+
+        #save_info {
+            padding-left: 100px;
+            color: #aaa;
+        }
+
+        a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        #save_btn {
+            float: right;
+            margin-right: 100px;
+        }
+
+            #save_btn a {
+                padding: 5px;
+                border-radius: 3px;
+                transition: all .2s;
+            }
+
+                #save_btn a:hover {
+                    background: #0001;
+                }
+
+                #save_btn a:active {
+                    background: #0007;
+                    color: #fff;
+                }
+
+        #save_btn {
+            transition: all .3s;
+        }
+
+            #save_btn:active {
+                transform: scale(.9);
+            }
+
+            #opitions{
+                position:fixed;
+                top:0;
+                left:0;
+                background:var(--darkback);
+                box-shadow:#0003 0 3px 15px;
+                width:100%;
+                height:40px;
+                opacity:0;
+                padding:0 20px;
+                color:var(--active);
+                transition:all 1s;
+            }
+
+            #opitions:hover{
+                opacity:1;
+                transition:all .2s;
+            }
+
+            #opitions span{
+                font-size:16px;
+                line-height:40px;
+            }
+
+            #opitions button{
+                background:var(--background);
+                color:var(--active);
+                border-radius:3px;
+                border:none;
+                box-shadow:#0003 2px 0 10px;
+                padding:5px 20px;
+                margin:0 0 5px 10px;
+                outline: none;
+                transition:all .2s;
+            }
+
+            #opitions button:hover{
+                background:var(--darkback);
+            }
+
+            #opitions button:active{
+                transform:scale(.9);
+            }
+
+        body, html {
+            background: var(--background);
+            font-family: var(--mainfont),monospace;
+        }
+    </style>
+</head>
+<body onunload="save_content()" id="board">
+    <div id="opitions">
+        <span>主题</span>
+        <button id="theme" onclick="theme()">亮</button>
+    </div>
+    <div id="ctn">
+        <form action="http://write4Me.sinaapp.com/save.php" method="post" target="_blank" id="save_form">
+            <textarea id="code" name="code" style="display: none;"># Get Focused. Get Started. Get 4Me Writer.
+# Welcome to 4Me Writer.
+其实对于写作来讲，我们真正需要的，不是很好很强大的编辑工具，而是一个不容易被其他事情分心的环境。
+这个工具不及iA Writer，但是……
+> *iA Writer for Mac* US$29.99≈211CN￥.
+> *iA Writer for Windows* US$19.99≈140CN￥.
+4Me 基于浏览器，它是免费的。
+打开它，F11全屏，这个世界安静了。只有你正在写作的这行字在跳动。
+Happy Writing.
+
+4Me Writer每五分钟自动保存一次内容，你也可以用CTRL+S来手工保存。
+改自[4Me 写字板](http://write4me.sinaapp.com/)，灵感源自[iA Writer](https://ia.net/writer)。
+</textarea>
+        </form>
+        <div id="save_btn"><a href="javascript:$(&#39;#save_form&#39;).submit();void(0);">另存为...</a></div>
+        <div id="save_info"></div><div id="sound"></div>
+    </div>
+
+    <script>
+        var th = 1;
+        function theme() {
+            if (th == 1) {
+                document.getElementById("control").innerHTML = "*{--background:#1A1C1D;--darkback:#252829;--main:#00BAFF;--selection:#fff2;--active:#fff;--mainfont: 'NeverMind','Noto Sans S Chinese';--line: #333;--com:#fff1;}";
+                document.getElementById("theme").innerHTML = "暗";
+                th = 0;
+            }
+            else {
+                document.getElementById("control").innerHTML = "*{--background:#f8f8f8;--darkback:#f7f7f7;--mainfont:'NeverMind','Noto Sans S Chinese';--selection:#ace8ff;--main:#00baff;--active:#333;--line:#eee};--com:#0001";
+                document.getElementById("theme").innerHTML = "亮";
+                th = 1;
+            }
+        }
+
+        (function () {
+            var
+                fullScreenApi = {
+                    supportsFullScreen: false,
+                    isFullScreen: function () { return false; },
+                    requestFullScreen: function () { },
+                    cancelFullScreen: function () { },
+                    fullScreenEventName: '',
+                    prefix: ''
+                },
+                browserPrefixes = 'webkit moz o ms khtml'.split(' ');
+
+            // check for native support
+            if (typeof document.cancelFullScreen != 'undefined') {
+                fullScreenApi.supportsFullScreen = true;
+            } else {
+                // check for fullscreen support by vendor prefix
+                for (var i = 0, il = browserPrefixes.length; i < il; i++) {
+                    fullScreenApi.prefix = browserPrefixes[i];
+
+                    if (typeof document[fullScreenApi.prefix + 'CancelFullScreen'] != 'undefined') {
+                        fullScreenApi.supportsFullScreen = true;
+
+                        break;
+                    }
+                }
+            }
+
+            // update methods to do something useful
+            if (fullScreenApi.supportsFullScreen) {
+                fullScreenApi.fullScreenEventName = fullScreenApi.prefix + 'fullscreenchange';
+
+                fullScreenApi.isFullScreen = function () {
+                    switch (this.prefix) {
+                        case '':
+                            return document.fullScreen;
+                        case 'webkit':
+                            return document.webkitIsFullScreen;
+                        default:
+                            return document[this.prefix + 'FullScreen'];
+                    }
+                }
+                fullScreenApi.requestFullScreen = function (el) {
+                    return (this.prefix === '') ? el.requestFullScreen() : el[this.prefix + 'RequestFullScreen']();
+                }
+                fullScreenApi.cancelFullScreen = function (el) {
+                    return (this.prefix === '') ? document.cancelFullScreen() : document[this.prefix + 'CancelFullScreen']();
+                }
+            }
+
+            // jQuery plugin
+            if (typeof jQuery != 'undefined') {
+                jQuery.fn.requestFullScreen = function () {
+
+                    return this.each(function () {
+                        var el = jQuery(this);
+                        if (fullScreenApi.supportsFullScreen) {
+                            fullScreenApi.requestFullScreen(el);
+                        }
+                    });
+                };
+            }
+
+            // export api
+            window.fullScreenApi = fullScreenApi;
+        })();
+
+
+        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+            lineNumbers: false,
+            lineWrapping: true,
+            mode: 'markdown',
+            onCursorActivity: function () {
+
+                editor.setLineClass(hlLine, null);
+                hlLine = editor.setLineClass(editor.getCursor().line, "activeline");
+
+                $("pre.activeline ~ pre").addClass('activeline');
+                //console.log($("pre.activeline ~ pre"));
+            }
+        });
+
+
+        var hlLine = editor.setLineClass(0, "activeline");
+
+        var local_save = setInterval(save_content, 300000);
+
+        var glvar_isCtrl = false;
+        var glvar_ctrlDownTime = 0;
+
+
+        //var skey = 'write4Me';
+        var skey = window.location;
+
+        function playSound(url) {
+            $("#sound").html("<embed src='" + url + "' hidden=true autostart=true loop=false>");
+        }
+
+        function save_content(user) {
+            editor.save();
+            window.localStorage.setItem(skey, $('#code').val());
+            var d = new Date();
+            var curr_hour = d.getHours();
+            var curr_min = d.getMinutes();
+
+            if (user == 1)
+                $('#save_info').html('保存于 ' + curr_hour + '点' + curr_min + '分');
+            else
+                $('#save_info').html('自动保存于 ' + curr_hour + '点' + curr_min + '分');
+
+
+        }
+
+        $(document).ready(function () {
+
+            if (window.localStorage.getItem(skey) !== null) editor.setValue(window.localStorage.getItem(skey));
+            else {
+                editor.setCursor(3, 22);
+                editor.focus();
+            }
+
+            $(document).keyup(function (e) {
+                if (e.which == 17 || e.which == 224) {
+                    glvar_isCtrl = false;
+                }
+
+            }).keydown(function (e) {
+
+                if (e.which == 17 || e.which == 224) {
+                    glvar_isCtrl = true;
+                    glvar_ctrlDownTime = Date.parse(new Date());
+                    return false;
+                }
+
+                //Ctrl + s
+                if (glvar_isCtrl == true) {
+                    var curtime = Date.parse(new Date());
+                    var timedf = curtime - glvar_ctrlDownTime;
+                    if (e.which == 83 && timedf <= 2000) {
+                        save_content(1);
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
