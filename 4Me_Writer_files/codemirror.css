@@ -14,10 +14,7 @@
 }
 
 .CodeMirror-scroll {
-    overflow: scroll;
-    height: 350px;
-    /* This is needed to prevent an IE[67] bug where the scrolled content
-     is visible outside of the scrolling box. */
+    overflow: auto;
     position: relative;
 }
 
@@ -41,6 +38,23 @@
 
 .CodeMirror-lines {
     padding: .4em;
+}
+
+.activeline {
+    color: var(--active) !important;
+}
+
+.CodeMirror-scroll {
+    height: 99%;
+}
+
+.CodeMirror-lines {
+    cursor: text;
+}
+
+#save_info {
+    color: #aaa;
+    margin-top: 2%;
 }
 
 .CodeMirror pre {
@@ -155,6 +169,11 @@ span.cm-emstrong {
 
 span.cm-link {
     text-decoration: underline;
+}
+
+span.cm-string {
+    color: #4879BD;
+    opacity:.7;
 }
 
 div.CodeMirror span.CodeMirror-matchingbracket {
