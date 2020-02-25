@@ -996,7 +996,7 @@ var CodeMirror = (function () {
         function updateGutter() {
             if (!options.gutter && !options.lineNumbers) return;
             var hText = mover.offsetHeight, hEditor = scroller.clientHeight;
-            gutter.style.height = (hText - hEditor < 2 ? hEditor : hText) + "px";
+            gutter.style.height = ((hText - hEditor < 2 ? hEditor : hText) - 1) + "px";
             var html = [], i = showingFrom;
             doc.iter(showingFrom, Math.max(showingTo, showingFrom + 1), function (line) {
                 if (line.hidden) {

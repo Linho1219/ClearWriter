@@ -26,6 +26,7 @@
     background-color: var(--darkback);
     border-right: 2px solid var(--line);
     min-width: 2em;
+    box-shadow: var(--shadow) 0px 0px 20px;
     height: 100%;
 }
 
@@ -37,7 +38,7 @@
 }
 
 .CodeMirror-lines {
-    padding: .4em;
+    padding: .4rem 1.4rem;
 }
 
 .activeline {
@@ -46,10 +47,7 @@
 
 .CodeMirror-scroll {
     height: 99%;
-}
-
-.CodeMirror-lines {
-    cursor: text;
+    cursor:text;
 }
 
 #save_info {
@@ -60,7 +58,6 @@
 .CodeMirror pre {
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
-    -o-border-radius: 0;
     border-radius: 0;
     border-width: 0;
     margin: 0;
@@ -93,7 +90,7 @@
     position: absolute;
     visibility: hidden;
     border-left: 2px solid var(--main);
-    transition: top 0.15s,left 0.15s,opacity 0.3s !important;
+    transition: top 0.1s,left 0.1s,opacity 0.4s !important;
 }
 
 .CodeMirror-focused pre.CodeMirror-cursor {
@@ -135,6 +132,7 @@
 */
 .cm-s-default span.cm-header {
     font-weight:700;
+    margin-left:-1.2rem;
 }
 
 .cm-s-default span.cm-quote {
@@ -176,10 +174,6 @@ span.cm-string {
     opacity:.7;
 }
 
-div.CodeMirror span.CodeMirror-matchingbracket {
-    color: #0f0;
-}
-
 div.CodeMirror span.CodeMirror-nonmatchingbracket {
-    color: #f22;
+    color: #AF2031;
 }

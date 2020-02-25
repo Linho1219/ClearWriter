@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html id="html">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Clear Writer</title>
@@ -12,12 +12,16 @@
 
     <style id="control"></style>
     <style type="text/css">
-        *{
+        * {
             font-family: var(--mainfont);
         }
 
-        html{
-            height:100%;
+            *:focus {
+                outline: none;
+            }
+
+        html {
+            height: 100%;
         }
 
         *::selection {
@@ -44,7 +48,7 @@
 
         ::-webkit-scrollbar-thumb {
             background-color: var(--line) !important;
-            border-radius:7px;
+            border-radius: 7px;
         }
 
         #board {
@@ -63,7 +67,7 @@
             font-family: var(--mainfont),monospace;
             font-size: 20px;
             background: var(--background);
-            color: #aaa;
+            color: #999;
             height: 100%;
         }
 
@@ -92,86 +96,242 @@
             z-index: 999;
         }
 
-            #opitions:hover{
-                opacity:1;
-                transition:all .2s;
+            #opitions:hover {
+                opacity: 1;
+                transition: all .2s;
             }
 
-            #opitions strong{
-                color:var(--main);
-                font-size:18px;
-                line-height:40px;
-                margin-left:2%;
+            #opitions #title {
+                color: var(--main);
+                font-size: 19px;
+                font-weight: 900;
+                line-height: 40px;
+                margin-left: 2%;
+                margin-right: 0;
+                width: 120px;
+                text-align: center;
+                cursor: pointer;
+                display: inline-block;
             }
 
-            #opitions span{
-                font-size:16px;
-                line-height:40px;
-                margin-left:1.5%;
+                #opitions #title:after {
+                    content: '';
+                    background: var(--main);
+                    height: 2.3px;
+                    width: 0px;
+                    position: absolute;
+                    bottom: 8px;
+                    left: 2%;
+                    transition: all .3s;
+                }
+
+                #opitions #title:hover:after {
+                    width: 120px;
+                }
+
+            #opitions span {
+                font-size: 16px;
+                font-weight:600;
+                line-height: 40px;
+                margin-left: 1.5%;
             }
 
             #opitions button,
-            #opitions a{
-                background:var(--background);
-                color:var(--active);
-                border-radius:3px;
-                border:none;
-                box-shadow:rgba(0,0,0,0.18) 2px 0 10px;
-                padding:5px 20px;
-                margin:5px .5% 5px .5%;
+            #opitions a {
+                background: var(--background);
+                color: var(--active);
+                border-radius: 3px;
+                border: none;
+                box-shadow: rgba(0,0,0,0.18) 2px 0 10px;
+                padding: 5px 0;
+                width:55px;
+                text-align:center;
+                margin: 5px .5% 5px .5%;
                 outline: none;
-                line-height:20px;
-                cursor:pointer;
-                font-size:13px;
-                transition:all .2s;
+                line-height: 20px;
+                cursor: pointer;
+                font-size: 13px;
+                transition: all .2s;
             }
 
-            #opitions button:hover,
-            #opitions a:hover{
-                transform: scale(1.07);
+            #opitions a{
+                padding-left:15px;
+                padding-right:15px;
             }
+
+            #opitions #lang{
+                width:80px !important;
+            }
+
+                #opitions button:hover,
+                #opitions a:hover {
+                    transform: scale(1.07);
+                }
 
                 #opitions button:active,
-                #opitions a:active{
+                #opitions a:active {
                     transform: scale(.9);
                 }
+
+        #sidebar {
+            position: fixed;
+            left: -25rem;
+            top: 0;
+            height: 100%;
+            width: 20rem;
+            color: #999;
+            padding: 0 2rem;
+            box-shadow: rgba(0,0,0,.2) 0 0 20px; /*,rgba(0,0,0,.8) 0 0 0 100vw*/
+            background: var(--darkback);
+            overflow: auto;
+            z-index: 998;
+            overflow-wrap: break-word;
+            display: none;
+        }
+
+            #sidebar h1 {
+                color: var(--main);
+                font-size: 28px;
+                text-shadow: var(--shadow) 0 1px 5px;
+                margin-top: 50px;
+            }
+
+                #sidebar h1 a {
+                    transition: all .3s;
+                }
+
+            #sidebar h2 {
+                color: var(--main);
+                font-size: 20px;
+                text-shadow: var(--shadow) 0 1px 5px;
+            }
+
+            #cover{
+                position:fixed;
+                left:0;
+                top:0;
+                width:100%;
+                height:100%;
+                background:var(--shadow);
+                z-index:997;
+                display:none;
+                animation:fade .3s;
+
+            }
 
         body, html {
             background: var(--background);
             font-family: var(--mainfont),monospace;
         }
 
-        
+        code{
+            background:var(--com);
+            border-radius:3px;
+        }
     </style>
     <style id="transition"></style>
 </head>
 <body onunload="save_content()" id="board">
     <div id="opitions">
-        <strong>Clear Writer</strong>
-        <span>主题</span>
+        <span id="title" onclick="set_about()">Clear Writer</span>
+        <span id="title_of_theme">主题</span>
         <button id="theme" onclick="set_theme()">亮</button>
-        <span>行号</span>
+        <span id="title_of_num">行号</span>
         <button id="num" onclick="set_line_num()">关</button>
+        <span id="title_of_lang">语言</span>
+        <button id="lang" onclick="set_lang()">简体中文</button>
         <span onclick="set_stick()" id="stick" style="cursor:pointer">📌</span>
         <a id="save_btn" href="javascript:$(&#39;#save_form&#39;).submit();void(0);">另存为...</a>
     </div>
+    <div id="sidebar">
+        <article class="markdown-body entry-content p-3 p-md-6" itemprop="text">
+            <h1># 关于 Clear Writer</h1>
+            作者：林洪平
+            <h2>## 为什么编写 Clear Writer</h2>
+            <blockquote style="border-left: .25em solid #dfe2e5;margin:1rem 0 1rem 1.2rem;padding-left:0.5rem">
+                <p>其实写作，最需要的并不是很好很强大的工具，而是一个不易让人分心的环境。</p>
+            </blockquote>
+            <p>Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个闲钱去买正版（毕竟 Win 端一百多块，Mac 端两百多块）。我找到了一个类似的软件，叫做 4Me 写字板，<a href="/Henrylin666/ClearWriter/blob/master/write.4meapp.com">原链接，现已失效</a>。但是，它和 iA Writer 的差距未免有点大……</p>
+            <p>4Me 写字板基于 CodeMirror，很方便自定义。</p>
+            <p>于是我征求了原作者同意之后，借着这次因武汉肺炎疫情宅家的时间，尝试自己以 4Me 写字板为基础加以改进。反正经历了一通大修大改，我做出了这个很像 iA Writer 的文本编辑器 —— Clear Writer，意味着希望人们使用它时，可以让人“Clear”自己的思维。</p>
+            <h2>## 使用技巧</h2>
+            <ul>
+                <li>按 <code>F11</code> （或 <code>Fn+F11</code> ）切入全屏，安心写作；</li>
+                <li><code>Ctrl/Cmd + F</code> 搜索全文；</li>
+                <li>鼠标移动至顶部时显示顶栏，其中可以切换亮/暗色模式、行号、语言等；</li>
+                <li>点击顶栏上的图钉 <code>📌</code> 按钮可以固定顶栏，使其不自动隐藏；</li>
+                <li>右上角有 <code>另存为...</code> 按钮，点击可以将文字导出为 <code>.txt</code> 格式文本</li>
+                <li>点击左上角的 <code>Clear Writer</code> 会在侧边栏显示你现在正在看的这段文字，再次点击 <code>Clear Writer</code> 隐藏侧边栏；</li>
+                <li><code>Ctrl/Cmd + 鼠标滚轮</code> 可以放大/缩小字号；</li>
+                <li>可撤销最近的2000次操作，无惧修改；</li>
+                <li>Clear Writer 全自动保存，正常情况下每5分钟自动保存一次，在页面关闭/刷新的时候也会再次自动保存一次。实在不放心，也可以 <code>Ctrl/Cmd + S</code> 手动保存。</li>
+            </ul>
+            <h2>## 兼容性</h2>
+            <ul>
+                <li>✔ Chrome</li>
+                <li>✔ Firefox</li>
+                <li>✔ Edge</li>
+                <li><g-emoji class="g-emoji" alias="x" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png">❌</g-emoji> IE</li>
+            </ul>
+            <p><strong>**注意：不再兼容 Internet Exporler 浏览器 —— 原因很简单，第一，用 IE 写作的人的头脑大概率不会“Clear”；第二，兼容古老的IE真的很痛苦……**</strong></p>
+            <h2>Clear Writer 和 4Me 写字板的区别</h2>
+            <ul>
+                <li>加入可选的暗色模式；</li>
+                <li>加入可选的行号；</li>
+                <li>加入半隐藏的滚动条；</li>
+                <li>优化了光标的观感（为此还特意修改了一下 CodeMirror.js）；</li>
+                <li>加入了一个隐藏式的顶栏（当然也可以选择不隐藏）；</li>
+                <li>把“保存到电脑”按钮挪到了右上角；</li>
+                <li>实现了布局自适应。</li>
+            </ul>
+            <p>暂时就这么多，以后再慢慢优化。</p>
+            <h2>## Clear Writer 和 iA Writer 的区别</h2>
+            <ul>
+                <li>iA Writer 可以实现高亮当前句子或段落，而 Clear Writer 只能高亮当前段落，而且是必选的；</li>
+                <li>Clear Writer 不具备 iA Writer 的语法高亮，如果真的有需要，可以试一试这个 Chrome 扩展<a href="https://chrome.google.com/webstore/detail/ikdjjgioalkbdihbhcfffjnanhnilipa" rel="nofollow">English Syntax Hightlighter</a>；</li>
+                <li>Clear Writer 不具备 iA Writer 统计单词数量和阅读所需时间的功能；</li>
+            </ul>
+            <p>其实我觉得虽然没有这些功能，Clear Writer 也算还行吧。反正，以后有时间慢慢加吧。</p>
+            <h2>## 关于隐私</h2>
+            <p><strong>**声明**</strong> 你在这个页面上输入的任何东西都保存在浏览器的 <strong>**本地缓存**</strong> ，一个字符都不会上传！如果你不放心，可以前往这个项目在<a href="https://github.com/Henrylin666/ClearWriter">Github</a>上，自行阅读源码。</p>
+        </article>
+
+        “Clear Writer”由林洪平采用CC-BY-NC-SA协议进行许可。
+
+    </div>
+    <div id="cover" onclick="set_about()"></div>
     <div id="ctn">
         <form action="http://write4Me.sinaapp.com/save.php" method="post" target="_blank" id="save_form">
             <textarea id="code" name="code" style="display: none;"># Welcome to Clear Writer，这是一个沉浸式 Markdown 写作软件。
 
-# 为什么编写 Clear Writer
+## 为什么编写 Clear Writer
 > 其实写作，最需要的并不是很好很强大的工具，而是一个不易让人分心的环境。
+
 Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个闲钱去买正版（毕竟 Win 端一百多块，Mac 端两百多块）。我找到了一个类似的软件，叫做 4Me 写字板，[原链接，现已失效](write.4meapp.com)。但是，它和 iA Writer 的差距未免有点大……
 4Me 写字板基于 CodeMirror，很方便自定义。
-于是我征求了原作者同意之后，借着这次因武汉肺炎疫情宅家的时间，尝试自己以 4Me 写字板为基础加以改进。反正经历了一通大修大改，我做出了这个至少长得很像 iA Writer 的文本编辑器 —— Clear Writer，意味着希望人们使用它时，可以让人“Clear”自己的思维。
+于是我征求了原作者同意之后，借着这次因武汉肺炎疫情宅家的时间，尝试自己以 4Me 写字板为基础加以改进。反正经历了一通大修大改，我做出了这个很像 iA Writer 的文本编辑器 —— Clear Writer，意味着希望人们使用它时，可以让人“Clear”自己的思维。
+附：(4Me 写字板镜像)[http://write4Me.sinaapp.com/]
 
-# 兼容性
-✔ Chrome
-✔ Firefox
-✔ Edge
-❌ IE
+## 使用技巧
+- 按 `F11` （或 `Fn+F11` ）切入全屏，安心写作；
+- `Ctrl/Cmd + F` 搜索全文；
+- 鼠标移动至顶部时显示顶栏，其中可以切换亮/暗色模式、行号、语言等；
+- 点击顶栏上的图钉 `📌` 按钮可以固定顶栏，使其不自动隐藏；
+- 右上角有 `另存为...` 按钮，点击可以将文字导出为 `.txt` 格式文本；
+- 点击左上角的 `Clear Writer` 会在侧边栏显示你现在正在看的这段文字，再次点击 `Clear Writer` 隐藏侧边栏；
+- `Ctrl/Cmd + 鼠标滚轮` 可以放大/缩小字号。
+- 可撤销最近的2000次操作，无惧修改；
+- Clear Writer 全自动保存，正常情况下每5分钟自动保存一次，在页面关闭/刷新的时候也会再次自动保存一次。实在不放心，还可以 `Ctrl/Cmd + S` 手动保存。
 
-# Clear Writer 和 4Me 写字板的区别
+## 兼容性
+- ✔ Chrome
+- ✔ Firefox
+- ✔ Edge
+- ❌ IE
+
+**注意：不再兼容 Internet Exporler 浏览器 —— 原因很简单，第一，用 IE 写作的人的头脑大概率不会“Clear”；第二，兼容古老的IE真的很痛苦……**
+
+## Clear Writer 和 4Me 写字板的区别
 - 加入可选的暗色模式；
 - 加入可选的行号；
 - 加入半隐藏的滚动条；
@@ -179,13 +339,17 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
 - 加入了一个隐藏式的顶栏（当然也可以选择不隐藏）；
 - 把“保存到电脑”按钮挪到了右上角；
 - 实现了布局自适应。
+
 暂时就这么多，以后再慢慢优化。
 
-# Clear Writer 和 iA Writer 的区别
+## Clear Writer 和 iA Writer 的区别
 - iA Writer 可以实现高亮当前句子或段落，而 Clear Writer 只能高亮当前段落，而且是必选的；
 - Clear Writer 不具备 iA Writer 的语法高亮，如果真的有需要，可以试一试这个 Chrome 扩展[English Syntax Hightlighter](https://chrome.google.com/webstore/detail/ikdjjgioalkbdihbhcfffjnanhnilipa)；
 - Clear Writer 不具备 iA Writer 统计单词数量和阅读所需时间的功能；
 其实我觉得虽然没有这些功能，Clear Writer 也算还行吧。反正，以后有时间慢慢加吧。
+
+## 关于隐私
+**声明** 你在这个页面上输入的任何东西都保存在浏览器的 **本地缓存** ，一个字符都不会上传！如果你不放心，可以前往这个项目在[Github](https://github.com/Henrylin666/ClearWriter)上的代码仓库，自行阅读源码。
 </textarea>
         </form>
         <div id="save_info"></div>
@@ -259,34 +423,65 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
             // export api
             window.fullScreenApi = fullScreenApi;
         })();
-        const darktheme = "*{--background:#1A1C1D;--darkback:#252829;--main:#00BAFF;--selection:#fff2;--active:#fff;--mainfont: 'NeverMind','Noto Sans S Chinese' !important;--line: #333;--com:#fff1;}";
-        const lighttheme = "*{--background:#f8f8f8;--darkback:#eee;--main:#00BAFF;--selection:#C2E8F4;--active:#333;--mainfont: 'NeverMind','Noto Sans S Chinese' !important;--line: #ddd;--com:#0001;}";
-        const transition = "body,html,.CodeMirror,.cm-comment{transition:background .3s}.CodeMirror-gutter{transition:all .3s}";
-        var stick=0;
+        const darktheme = "*{--background:#1A1C1D;--darkback:#252829;--main:#00BAFF;--selection:#fff2;--active:#fff;--mainfont: 'NeverMind','Noto Sans S Chinese' !important;--line: #333;--com:#fff1;--shadow:rgba(255,255,255,.3)}";
+        const lighttheme = "*{--background:#f8f8f8;--darkback:#eee;--main:#00BAFF;--selection:#C2E8F4;--active:#333;--mainfont: 'NeverMind','Noto Sans S Chinese' !important;--line: #ddd;--com:#0001;--shadow:rgba(0,0,0,.2)}";
+        const transition = "body,html,.CodeMirror,.cm-comment{transition:background .3s}.CodeMirror-gutter,#cover{transition:all .3s}#sidebar{transition:all .3s,left .5s}";
+        var stick = 0;
+        var about = 0;
+        var DARK = "暗";
+        var LIGHT = "亮";
+        var ON = "开";
+        var OFF = "关";
+        if (localStorage.lang) {
+            if (localStorage.lang == 'en') {
+                DARK = "Dark";
+                LIGHT = "Light";
+                ON = "On";
+                OFF = "Off";
+                document.getElementById("title_of_theme").innerHTML = "Theme";
+                document.getElementById("title_of_num").innerHTML = "Line Number";
+                document.getElementById("title_of_lang").innerHTML = "Language";
+                document.getElementById("lang").innerHTML = "English";
+            }
+            if (localStorage.lang == 'tc') {
+                ON = "開";
+                OFF = "關";
+                document.getElementById("title_of_theme").innerHTML = "主題";
+                document.getElementById("title_of_num").innerHTML = "行號";
+                document.getElementById("title_of_lang").innerHTML = "語言";
+                document.getElementById("lang").innerHTML = "繁体中文";
+            }
+        }
+        else localStorage.lang = 'sc';
+
+
         if (localStorage.theme)
             if (localStorage.theme == 1) {
                 document.getElementById("control").innerHTML = lighttheme;
+                document.getElementById("theme").innerHTML = LIGHT;
             }
             else {
                 document.getElementById("control").innerHTML = darktheme;
-                document.getElementById("theme").innerHTML = "暗";
+                document.getElementById("theme").innerHTML = DARK;
             }
         else {
             localStorage.theme = 1;
             document.getElementById("control").innerHTML = lighttheme;
+            document.getElementById("theme").innerHTML = LIGHT;
         }
 
-        if (localStorage.line_num) {
-            if (localStorage.line_num==2) {
-                document.getElementById("num").innerHTML = "开";
-            }
-        }
+        if (localStorage.line_num) 
+            if (localStorage.line_num == 2) document.getElementById("num").innerHTML = ON;
+            else document.getElementById("num").innerHTML = OFF;
         else localStorage.line_num = 1;
 
         var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-            lineNumbers: (localStorage.line_num-1),
+            lineNumbers: (localStorage.line_num - 1),
             lineWrapping: true,
             mode: 'markdown',
+            indentUnit: 4,
+            indentWithTabs: true,
+            undoDepth: 2000,
             onCursorActivity: function () {
 
                 editor.setLineClass(hlLine, null);
@@ -297,17 +492,17 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
             }
         });
 
-        
-        
+
+
         function set_theme() {
             if (localStorage.theme == 1) {
                 document.getElementById("control").innerHTML = darktheme;
-                document.getElementById("theme").innerHTML = "暗";
+                document.getElementById("theme").innerHTML = DARK;
                 localStorage.theme = 2;
             }
             else {
                 document.getElementById("control").innerHTML = lighttheme;
-                document.getElementById("theme").innerHTML = "亮";
+                document.getElementById("theme").innerHTML = LIGHT;
                 localStorage.theme = 1;
             }
         }
@@ -316,6 +511,28 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
             if (localStorage.line_num == 1) localStorage.line_num = 2;
             else localStorage.line_num = 1;
             window.history.go(0);
+        }
+        function set_lang() {
+            editor.save();
+            if (localStorage.lang == 'sc') localStorage.lang = 'tc';
+            else if (localStorage.lang == 'tc') localStorage.lang = 'en';
+            else localStorage.lang = 'sc';
+            window.history.go(0);
+        }
+        function set_about() {
+            if (about == 0) {
+                document.getElementById('sidebar').style.display = 'block';
+                document.getElementById('cover').style.display = 'block';
+                setTimeout("document.getElementById('sidebar').style.left = '0';", 100);
+                about = 1;
+            }
+            else {
+                document.getElementById('sidebar').style.left = '';
+                document.getElementById('cover').style.opacity = '0';
+                setTimeout("document.getElementById('cover').style.display = '';", 280);
+                setTimeout("document.getElementById('sidebar').style.display = '';document.getElementById('cover').style.opacity = '';", 320);
+                about = 0;
+            }
         }
         function set_stick() {
             if (stick == 0) {
@@ -339,7 +556,7 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
 
         var skey = window.location;
 
-        setTimeout("document.getElementById('transition').innerHTML = transition;", 300 )
+        setTimeout("document.getElementById('transition').innerHTML = transition;", 300)
         setTimeout("document.getElementById('opitions').style.opacity = '';", 1000)
 
 
@@ -392,7 +609,6 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
                 }
             });
         });
-
     </script>
 </body>
 </html>
