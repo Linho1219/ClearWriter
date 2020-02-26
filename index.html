@@ -9,6 +9,7 @@
     <script src="./Clear_Writer_files/markdown.js"></script>
     <script src="./Clear_Writer_files/jquery.min.js"></script>
     <script src="./Clear_Writer_files/jquery.fullscreen.js"></script>
+    <script src="./Clear_Writer_files/language.js"></script>
 
     <style id="control"></style>
     <style type="text/css">
@@ -112,6 +113,7 @@
                 text-align: center;
                 cursor: pointer;
                 display: inline-block;
+                transition: opacity .1s;
             }
 
                 #opitions #title:after {
@@ -129,9 +131,14 @@
                     width: 120px;
                 }
 
+                #opitions #title:active:after {
+                    width: 80px;
+                    transform: translateX(20px);
+                }
+
             #opitions span {
                 font-size: 16px;
-                font-weight:600;
+                font-weight: 600;
                 line-height: 40px;
                 margin-left: 1.5%;
             }
@@ -144,8 +151,7 @@
                 border: none;
                 box-shadow: rgba(0,0,0,0.18) 2px 0 10px;
                 padding: 5px 0;
-                width:55px;
-                text-align:center;
+                text-align: center;
                 margin: 5px .5% 5px .5%;
                 outline: none;
                 line-height: 20px;
@@ -154,24 +160,28 @@
                 transition: all .2s;
             }
 
-            #opitions a{
-                padding-left:15px;
-                padding-right:15px;
+            #opitions button {
+                width: 55px;
             }
 
-            #opitions #lang{
-                width:80px !important;
+            #opitions a {
+                padding-left: 15px;
+                padding-right: 15px;
             }
 
-                #opitions button:hover,
-                #opitions a:hover {
-                    transform: scale(1.07);
-                }
+            #opitions #lang {
+                width: 80px !important;
+            }
 
-                #opitions button:active,
-                #opitions a:active {
-                    transform: scale(.9);
-                }
+            #opitions button:hover,
+            #opitions a:hover {
+                transform: scale(1.07);
+            }
+
+            #opitions button:active,
+            #opitions a:active {
+                transform: scale(.9);
+            }
 
         #sidebar {
             position: fixed;
@@ -181,7 +191,7 @@
             width: 20rem;
             color: #999;
             padding: 0 2rem;
-            box-shadow: rgba(0,0,0,.2) 0 0 20px; /*,rgba(0,0,0,.8) 0 0 0 100vw*/
+            box-shadow: rgba(0,0,0,.2) 0 0 20px;
             background: var(--darkback);
             overflow: auto;
             z-index: 998;
@@ -206,17 +216,43 @@
                 text-shadow: var(--shadow) 0 1px 5px;
             }
 
-            #cover{
-                position:fixed;
-                left:0;
-                top:0;
-                width:100%;
-                height:100%;
-                background:var(--shadow);
-                z-index:997;
-                display:none;
-                animation:fade .3s;
+        #cover {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--shadow);
+            z-index: 997;
+            display: none;
+            animation: fade .3s;
+        }
 
+        #msgbox {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+            z-index: 998;
+            background: var(--darkback);
+            width: 30rem;
+            height: 20rem;
+            border-radius: 3px;
+            padding: 2rem;
+            box-shadow: rgba(0,0,0,.3) 0 5px 15px;
+        }
+
+            #msgbox p {
+                line-height: 1.7rem;
+            }
+
+            #msgbox #close {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                cursor: pointer;
             }
 
         body, html {
@@ -224,9 +260,14 @@
             font-family: var(--mainfont),monospace;
         }
 
-        code{
-            background:var(--com);
-            border-radius:3px;
+        code {
+            background: var(--com);
+            border-radius: 3px;
+            padding: 0 7px;
+        }
+
+        a:any-link {
+            color: var(--main);
         }
     </style>
     <style id="transition"></style>
@@ -243,12 +284,15 @@
         <span onclick="set_stick()" id="stick" style="cursor:pointer">📌</span>
         <a id="save_btn" href="javascript:$(&#39;#save_form&#39;).submit();void(0);">另存为...</a>
     </div>
+    
     <div id="sidebar">
-        <article class="markdown-body entry-content p-3 p-md-6" itemprop="text">
+        <article id="about" itemprop="text">
             <h1># 关于 Clear Writer</h1>
             作者：林洪平
             <h2>## 为什么编写 Clear Writer</h2>
-            <blockquote style="border-left: .25em solid #dfe2e5;margin:1rem 0 1rem 1.2rem;padding-left:0.5rem">
+            <blockquote style="        border-left: .25em solid #dfe2e5;
+        margin: 1rem 0 1rem 1.2rem;
+        padding-left: 0.5rem">
                 <p>其实写作，最需要的并不是很好很强大的工具，而是一个不易让人分心的环境。</p>
             </blockquote>
             <p>Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个闲钱去买正版（毕竟 Win 端一百多块，Mac 端两百多块）。我找到了一个类似的软件，叫做 4Me 写字板，<a href="/Henrylin666/ClearWriter/blob/master/write.4meapp.com">原链接，现已失效</a>。但是，它和 iA Writer 的差距未免有点大……</p>
@@ -299,7 +343,7 @@
         “Clear Writer”由林洪平采用CC-BY-NC-SA协议进行许可。
 
     </div>
-    <div id="cover" onclick="set_about()"></div>
+    <div id="cover"></div>
     <div id="ctn">
         <form action="http://write4Me.sinaapp.com/save.php" method="post" target="_blank" id="save_form">
             <textarea id="code" name="code" style="display: none;"># Welcome to Clear Writer，这是一个沉浸式 Markdown 写作软件。
@@ -425,36 +469,70 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
         })();
         const darktheme = "*{--background:#1A1C1D;--darkback:#252829;--main:#00BAFF;--selection:#fff2;--active:#fff;--mainfont: 'NeverMind','Noto Sans S Chinese' !important;--line: #333;--com:#fff1;--shadow:rgba(255,255,255,.3)}";
         const lighttheme = "*{--background:#f8f8f8;--darkback:#eee;--main:#00BAFF;--selection:#C2E8F4;--active:#333;--mainfont: 'NeverMind','Noto Sans S Chinese' !important;--line: #ddd;--com:#0001;--shadow:rgba(0,0,0,.2)}";
-        const transition = "body,html,.CodeMirror,.cm-comment{transition:background .3s}.CodeMirror-gutter,#cover{transition:all .3s}#sidebar{transition:all .3s,left .5s}";
+        const transition = "body,html,.CodeMirror,.cm-comment,#msgbox{transition:background .3s}.CodeMirror-gutter,#cover{transition:all .3s}#sidebar{transition:all .3s,left .5s}";
         var stick = 0;
         var about = 0;
         var DARK = "暗";
         var LIGHT = "亮";
         var ON = "开";
         var OFF = "关";
-        if (localStorage.lang) {
-            if (localStorage.lang == 'en') {
+        var SAVED_AT = "保存于 ";
+        var AUTO_SAVED_AT = "自动保存于 ";
+        function set_lang_to(lang) {
+            if (lang == 'en') {
                 DARK = "Dark";
                 LIGHT = "Light";
                 ON = "On";
                 OFF = "Off";
+                SAVED_AT = "Saved at ";
+                AUTO_SAVED_AT = "Automatically saved at ";
                 document.getElementById("title_of_theme").innerHTML = "Theme";
                 document.getElementById("title_of_num").innerHTML = "Line Number";
                 document.getElementById("title_of_lang").innerHTML = "Language";
                 document.getElementById("lang").innerHTML = "English";
+                document.getElementById("save_btn").innerHTML = "Save as...";
+                document.getElementById("about").innerHTML = '<h1># About Clear Writer</h1>作者：林洪平<h2>## Why to Write Clear Writer</h2><blockquote style="border-left: .25em solid #dfe2e5;margin:1rem 0 1rem 1.2rem;padding-left:0.5rem"><p>In fact, we don&#x27;t need powerful tools for writing. All we need, is just an environment which can make us focus on which we&#x27;re doing.</p></blockquote><h2>## Skills</h2><ul><li>Press <code>F11</code> (or <code>Fn+F11</code> ) to set the page to full screen;</li><li>Press <code>Ctrl/Cmd + F</code> to search;</li><li>Hover the top of the page to see the top bar;</li><li>Click on the "<code>📌</code>" to pin the top bar;</li><li>Click on the <code>Save as...</code> button in the upper right corner to export the text to <code>.txt</code> format;</li><li>Click on the <code>Clear Writer</code> button to see the sidebar;</li><li>Clear Writer will save your changes automatically.</li></ul><h2>## Compatibility</h2><ul><li>✔ Chrome</li><li>✔ Firefox</li><li>✔ Edge</li><li><g-emoji class="g-emoji" alias="x" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png">❌</g-emoji> IE</li></ul><h2>## Features of Clear Writer</h2><ul><li>Optional dark mode;</li><li>Optional line numbers;</li><li>Beautified scroll bar;</li><li>Hideable top bar;</li><li>Auto-filled UI.</li></ul><h2>## Privacy Policy</h2><p><strong> ** Attention Please **</strong> Anything that you entered on this page is saved in your browser&#x27;s<strong> ** local storge **</strong> and no characters are uploaded!!! If you are not assured, you can read the source code at<a href="https://github.com/Henrylin666/ClearWriter"> Github</a>.</ p></article>';
             }
-            if (localStorage.lang == 'tc') {
+            if (lang == 'tc') {
                 ON = "開";
                 OFF = "關";
+                SAVED_AT = "存储于 ";
+                AUTO_SAVED_AT = "自動存儲於 ";
                 document.getElementById("title_of_theme").innerHTML = "主題";
                 document.getElementById("title_of_num").innerHTML = "行號";
                 document.getElementById("title_of_lang").innerHTML = "語言";
-                document.getElementById("lang").innerHTML = "繁体中文";
+                document.getElementById("lang").innerHTML = "繁體中文";
+                document.getElementById("save_btn").innerHTML = "另存為...";
+                document.getElementById("about").innerHTML = '<h1># 關於 Clear Writer</h1>作者：林洪平<h2>## 為什麼編寫 Clear Writer</h2><blockquote style="border-left: .25em solid #dfe2e5;margin:1rem 0 1rem 1.2rem;padding-left:0.5rem"><p>其實寫作，最需要的並不是很好很強大的工具，而是一個不易讓人分心的環境。</p></blockquote><p>Mac上的iA Writer 固然能很好地做到這一點，但作為一個初二學生，我確實也沒有那個閒錢去買正版（畢竟Win 端一百多塊，Mac 端兩百多塊） 。我找到了一個類似的程式，叫做 4Me 寫字板，<a href="/Henrylin666/ClearWriter/blob/master/write.4meapp.com">原鏈接，現已失效</a>。但是，它和 iA Writer 的差距未免有點大……</p><p>4Me 寫字板基於 CodeMirror，很方便自定義。</p><p>於是我徵求了原作者同意之後，藉著這次因武漢肺炎疫情宅家的時間，嘗試自己以 4Me 寫字板為基礎加以改進。反正經歷了一通大脩大改，我做出了這個很像 iA Writer 的文本編輯器 —— Clear Writer，意味著希望人們使用它時，可以讓人“Clear”自己的思維。</p><h2>## 使用技巧</h2><ul><li>按<code>F11</code> （或<code>Fn+F11</code> ）切入全屏，安心寫作；</li><li><code>Ctrl/Cmd + F</code> 搜索全文；</li><li>鼠標移動至頂部時顯示頂欄，其中可以切換亮/暗色模式、行號、語言等；</li><li>點擊頂欄上的圖釘<code>📌</code> 按鈕可以固定頂欄，使其不自動隱藏；</li><li>右上角有<code>另存為...</code> 按鈕，點擊可以將文字導出為<code>.txt</code> 格式文本</li><li>點擊左上角的<code>Clear Writer</code> 會在側邊欄顯示你現在正在看的這段文字，再次點擊<code>Clear Writer</code> 隱藏側邊欄；</li ><li><code>Ctrl/Cmd + 鼠標滾輪</code> 可以放大/縮小字型大小；</li><li>可撤銷最近的2000次操作，無懼修改；</li><li>Clear Writer 全自動保存，正常情況下每5分鐘自動保存一次，在頁面關閉/重繪的時候也會再次自動保存一次。實在不放心，也可以<code>Ctrl/Cmd + S</code> 手動保存。</li></ul><h2>## 兼容性</h2><ul><li>✔ Chrome</li><li>✔ Firefox</li><li>✔ Edge</li><li><g-emoji class="g-emoji" alias="x" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png">❌</ g-emoji> IE</li></ul><p><strong>**注意：不再相容Internet Exporler 瀏覽器 —— 原因很簡單，第一，用IE 寫作的人的頭腦大概率不會“Clear”；第二，兼容古老的IE真的很痛苦……**</strong></p><h2>Clear Writer 和 4Me 寫字板的區別</h2><ul><li>加入可選的暗色模式；</li><li>加入可選的行號；</li><li>加入半隱藏的滾動條；</li><li>優化了光標的觀感（為此還特意修改了一下 CodeMirror.js）；</li><li>加入了一個隱藏式的頂欄（當然也可以選擇不隱藏）；</li><li>把“保存到電腦”按鈕挪到了右上角；</li><li>實現了佈局自適應。</li></ul><p>暫時就這麼多，以後再慢慢優化。</p><h2>## Clear Writer 和 iA Writer 的區別</h2><ul><li>iA Writer 可以實現高亮當前句子或段落，而 Clear Writer 只能高亮當前段落，而且是必選的；</li><li>Clear Writer 不具備 iA Writer 的語法高亮，如果真的有需要，可以試一試這個Chrome 擴展<a href="https://chrome.google.com/webstore/detail/ikdjjgioalkbdihbhcfffjnanhnilipa" rel= "nofollow">English Syntax Hightlighter</a>；</li><li>Clear Writer 不具備 iA Writer 統計單詞數量和閱讀所需時間的功能；</li></ul><p>其實我覺得雖然沒有這些功能，Clear Writer 也算還行吧。反正，以後有時間慢慢加吧。</p><h2>## 關於隱私</h2><p><strong>**聲明**</strong> 你在這個頁面上輸入的任何東西都保存在瀏覽器的<strong>**本地緩存**</strong> ，一個字元都不會上傳！如果你不放心，可以前往這個項目在<a href="https://github.com/Henrylin666/ClearWriter">Github</a>上，自行閱讀源碼。</p></article>';
             }
         }
-        else localStorage.lang = 'sc';
-
-
+        if (localStorage.lang) set_lang_to(localStorage.lang)
+        else {
+            switch (navigator.language.toLowerCase().substr(0,2)) {
+                case 'zh':
+                    switch (navigator.language.toLowerCase()) {
+                        case "zh-tw":
+                        case "zh-hk":
+                            localStorage.lang = 'tc';
+                            set_lang_to('tc')
+                            break;
+                        case "zh-cn":
+                            localStorage.lang = 'sc';
+                            break;
+                        default: break;
+                    }
+                    break;
+                case 'en':
+                    localStorage.lang = 'en';
+                    set_lang_to('en');
+                    break;
+                default:
+                    msgbox('Sorry, Clear Writer does not support your language.', 'ERR:LANG-UNSUPPORTED<p>Language: ' + language(navigator.language.toLowerCase(), 'local') + ' / ' + language(navigator.language.toLowerCase(), 'en') + ' / ' + language(navigator.language.toLowerCase(), 'sc') + ' / ' + language(navigator.language.toLowerCase(), 'tc') + '.<br />抱歉，Clear Writer 不兼容你正在使用的语言。<br />抱歉，Clear Writer 不相容你正在使用的語言。<br />Clear Writer now supports Chinese (both simplified & traditional) and English. You can set the language on the top bar later.<br />You can also help me to translate Clear Writer. Please <a href="mailto:linhongping1219@163.com">email me</a>.</div>');
+                    localStorage.lang = 'en';
+                    set_lang_to('en');
+                    break;
+            }
+        }
         if (localStorage.theme)
             if (localStorage.theme == 1) {
                 document.getElementById("control").innerHTML = lighttheme;
@@ -470,10 +548,13 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
             document.getElementById("theme").innerHTML = LIGHT;
         }
 
-        if (localStorage.line_num) 
+        if (localStorage.line_num)
             if (localStorage.line_num == 2) document.getElementById("num").innerHTML = ON;
             else document.getElementById("num").innerHTML = OFF;
-        else localStorage.line_num = 1;
+        else {
+            localStorage.line_num = 1;
+            document.getElementById("num").innerHTML = OFF;
+        }
 
         var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
             lineNumbers: (localStorage.line_num - 1),
@@ -522,18 +603,47 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
         function set_about() {
             if (about == 0) {
                 document.getElementById('sidebar').style.display = 'block';
-                document.getElementById('cover').style.display = 'block';
+                cover('set_about()');
                 setTimeout("document.getElementById('sidebar').style.left = '0';", 100);
                 about = 1;
             }
             else {
                 document.getElementById('sidebar').style.left = '';
-                document.getElementById('cover').style.opacity = '0';
-                setTimeout("document.getElementById('cover').style.display = '';", 280);
-                setTimeout("document.getElementById('sidebar').style.display = '';document.getElementById('cover').style.opacity = '';", 320);
+                close_cover();
+                setTimeout("document.getElementById('sidebar').style.display = '';", 320);
                 about = 0;
             }
         }
+        
+        function msgbox(title, content) {
+            cover('close_msgbox()');
+            var box = document.createElement('div');
+            document.body.appendChild(box);
+            box.id = "msgbox";
+            box.innerHTML = '<div id="msgbox"><g-emoji id="close" alias="x" onclick="close_msgbox()" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png">❌</g-emoji><h1>'
+                + title
+                + '</h1>'
+                + content
+                + '</div>';
+        }
+
+        function close_msgbox() {
+            document.getElementById('msgbox').parentNode.removeChild(document.getElementById('msgbox'));
+            close_cover();
+        }
+
+        function cover(onclick) {
+            const coverdiv = document.getElementById('cover');
+            coverdiv.style.opacity = '1';
+            coverdiv.style.display = 'block';
+            coverdiv.setAttribute("onclick",onclick);
+        }
+
+        function close_cover() {
+            document.getElementById('cover').style.opacity = '0';
+            setTimeout("document.getElementById('cover').style.display = '';", 280);
+        }
+        
         function set_stick() {
             if (stick == 0) {
                 document.getElementById('opitions').style.opacity = '1';
@@ -546,6 +656,7 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
                 document.getElementById('stick').innerHTML = '📌';
             }
         }
+        
 
         var hlLine = editor.setLineClass(0, "activeline");
 
@@ -559,22 +670,15 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
         setTimeout("document.getElementById('transition').innerHTML = transition;", 300)
         setTimeout("document.getElementById('opitions').style.opacity = '';", 1000)
 
-
-        function playSound(url) {
-            $("#sound").html("<embed src='" + url + "' hidden=true autostart=true loop=false>");
-        }
-
         function save_content(user) {
             editor.save();
             window.localStorage.setItem(skey, $('#code').val());
             var d = new Date();
-            var curr_hour = d.getHours();
-            var curr_min = d.getMinutes();
-
-            if (user == 1)
-                $('#save_info').html('保存于 ' + curr_hour + '点' + curr_min + '分');
+            var time = d.getHours() + ':' + d.getMinutes();
+            if (user == 1) 
+                $('#save_info').html(SAVED_AT + time);
             else
-                $('#save_info').html('自动保存于 ' + curr_hour + '点' + curr_min + '分');
+                $('#save_info').html(AUTO_SAVED_AT + time);
         }
 
         $(document).ready(function () {
