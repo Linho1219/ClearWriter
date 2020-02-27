@@ -192,7 +192,7 @@ function language(code,display) {
                 case 'zh-tw':
                     lang = '繁体中文'; break;
                 case 'zu': lang = '祖鲁语'; break;
-                default: lang = 'Undefined'; break;
+                default: lang = '[ERR] Undefined in ISO Standard'; break;
             }
             break;
         case 'tc':
@@ -386,7 +386,7 @@ function language(code,display) {
                 case 'zh-tw':
                     lang = '繁體中文'; break;
                 case 'zu': lang = '祖魯語'; break;
-                default: lang = 'Undefined'; break;
+                default: lang = '[ERR] Undefined in ISO Standard'; break;
             }
             break;
         case 'en':
@@ -583,6 +583,7 @@ function language(code,display) {
                 default: lang = 'Undefined'; break;
             }
             break;
+        case 'native':
         default:
             switch (code) {
                 case 'aa': lang = "Afaraf"; break;
@@ -772,7 +773,7 @@ function language(code,display) {
                 case 'zh-tw':
                     lang = '繁體中文'; break;
                 case 'zu': lang = "isiZulu"; break;
-                default: lang = "Undefined"; break;
+                default: lang = "[ERR] Undefined in ISO Standard"; break;
             }
     }
     return lang;

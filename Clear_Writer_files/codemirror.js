@@ -996,7 +996,7 @@ var CodeMirror = (function () {
         function updateGutter() {
             if (!options.gutter && !options.lineNumbers) return;
             var hText = mover.offsetHeight, hEditor = scroller.clientHeight;
-            gutter.style.height = ((hText - hEditor < 2 ? hEditor : hText) - 1) + "px";
+            gutter.style.height = (hText - hEditor < 2 ? hEditor : hText) + "px";
             var html = [], i = showingFrom;
             doc.iter(showingFrom, Math.max(showingTo, showingFrom + 1), function (line) {
                 if (line.hidden) {
@@ -1032,15 +1032,15 @@ var CodeMirror = (function () {
             inputDiv.style.top = Math.max(0, Math.min(scroller.offsetHeight, headPos.y + lineOff.top - wrapOff.top)) + "px";
             inputDiv.style.left = Math.max(0, Math.min(scroller.offsetWidth, headPos.x + lineOff.left - wrapOff.left)) + "px";
             if (collapsed) {
-                cursor.style.top = (headPos.y - 5) + "px";
-                cursor.style.left = ((options.lineWrapping ? Math.min(headPos.x, lineSpace.offsetWidth) : headPos.x)-1) + "px";
+                cursor.style.top = headPos.y + "px";
+                cursor.style.left = (options.lineWrapping ? Math.min(headPos.x, lineSpace.offsetWidth) : headPos.x) + "px";
                 cursor.style.opacity = "1";
                 selectionDiv.style.display = "none";
             } else {
                 var sameLine = fromPos.y == toPos.y, html = "";
                 function add(left, top, right, height) {
                     html += '<div class="CodeMirror-selected" style="position: absolute; left: ' + left +
-                        'px; top: ' + (top - 5) + 'px; right: ' + right + 'px; height: ' + height + 'px"></div>';
+                        'px; top: ' + top + 'px; right: ' + right + 'px; height: ' + height + 'px"></div>';
                 }
                 if (sel.from.ch && fromPos.y >= 0) {
                     var right = sameLine ? lineSpace.clientWidth - toPos.x : 0;
@@ -1446,11 +1446,11 @@ var CodeMirror = (function () {
                 elt.parentNode.insertBefore(backup, elt.nextSibling);
                 top = backup.offsetTop;
             }
-            return { top: top, left: left };
+            return { top: top - 5, left: left - 1 };
         }
         function localCoords(pos, inLineWrap) {
             var x, lh = textHeight(), y = lh * (heightAtLine(doc, pos.line) - (inLineWrap ? displayOffset : 0));
-            if (pos.ch == 0) x = 0;
+            if (pos.ch == 0) x = -22;
             else {
                 var sp = measureLine(getLine(pos.line), pos.ch);
                 x = sp.left;
