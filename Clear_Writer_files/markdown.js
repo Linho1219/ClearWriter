@@ -10,6 +10,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
   ,   linktext = 'link'
   ,   linkhref = 'string'
   ,   em       = 'em'
+  ,   del      = 'del'
   ,   strong   = 'strong'
   ,   emstrong = 'emstrong';
 

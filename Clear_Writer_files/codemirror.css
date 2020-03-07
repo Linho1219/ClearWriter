@@ -8,6 +8,16 @@
     }
 }
 
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
 @keyframes window-in {
     0% {
         transform: scale(.9) translateZ(0);
@@ -30,18 +40,18 @@
 }
 
 .CodeMirror-scroll div {
-    color: #888
+    color: #888;
 }
 
 .CodeMirror-scroll {
     height: 100%;
     position: relative;
     overflow: auto;
-    color: rgba(0, 0, 0, 0);
+    color: rgba(0,0,0,0);
 }
 
     .CodeMirror-scroll:hover {
-        color: var(--scroll);
+        color: var(--scroll) !important;
     }
 
     .CodeMirror-scroll::-webkit-scrollbar,

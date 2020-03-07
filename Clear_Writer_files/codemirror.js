@@ -1,4 +1,5 @@
 // CodeMirror version 2.21
+// ATTENTION PLEASE: THIS CODEMIRROR WAS MODIFIED BY LIN HONGPING.
 //
 // All functions that need access to the editor's state live inside
 // the CodeMirror function. Below that, at the bottom of the file,
