@@ -3,7 +3,7 @@
 ## 为什么编写 Clear Writer
 > 其实写作，最需要的并不是很好很强大的工具，而是一个不易让人分心的环境。
 
-Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个闲钱去买正版（毕竟 Win 端一百多块，Mac 端两百多块）。我找到了一个类似的软件，叫做 4Me 写字板，[原链接，现已失效](write.4meapp.com)。但是，它和 iA Writer 的差距未免有点大……
+Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个闲钱去买正版（毕竟 Win 端一百多块，Mac 端两百多块）。我找到了一个类似的软件，叫做 4Me 写字板，[链接](write4me.sinaapp.com)。但是，它和 iA Writer 的差距未免有点大……
 
 4Me 写字板基于 CodeMirror，很方便自定义。
 
@@ -25,23 +25,21 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
 
 **注意：不再兼容 Internet Exporler 浏览器 —— 原因很简单，第一，用 IE 写作的人的头脑大概率不会“Clear”；第二，兼容古老的IE真的很痛苦……**
 
-## Clear Writer 和 4Me 写字板的区别
-- 加入可选的暗色模式；
-- 加入可选的行号；
-- 加入半隐藏的滚动条；
-- 优化了光标的观感（为此还特意修改了一下 CodeMirror.js）；
-- 加入了一个隐藏式的顶栏（当然也可以选择不隐藏）；
-- 把“保存到电脑”按钮挪到了右上角；
-- 实现了布局自适应。
-
-暂时就这么多，以后再慢慢优化。
-
-## Clear Writer 和 iA Writer 的区别
-- iA Writer 可以实现高亮当前句子或段落，而 Clear Writer 只能高亮当前段落，而且是必选的；
-- Clear Writer 不具备 iA Writer 的语法高亮，如果真的有需要，可以试一试这个 Chrome 扩展[English Syntax Hightlighter](https://chrome.google.com/webstore/detail/ikdjjgioalkbdihbhcfffjnanhnilipa)；
-- Clear Writer 不具备 iA Writer 统计单词数量和阅读所需时间的功能；
-
-其实我觉得虽然没有这些功能，Clear Writer 也算还行吧。反正，以后有时间慢慢加吧。
+## Clear Writer 的特点
+- 全自动保存；
+- 支持实时 MarkDown 语法，标题悬挂；
+- 基于浏览器，支持 Chrome / Firefox / Edge（不支持 IE），但不支持移动端（有谁会用手机来写作呢）；
+- 支持亮色 / 暗色模式；
+- Chrome 上支持漂亮的隐藏式滚动条；
+- 支持简体中文 / 繁体中文 / 英文三种语言（繁体中文是机翻的，英文是我一个一个字自己翻译的）；
+- 支持开启 / 关闭行号；
+- 高亮当前段落；
+- 漂亮的光标闪动和跳动效果；
+- 界面自适应；
+- 内容全部在本地缓存，完全隐私保护；
+- 支持导出 .txt 格式；
+- 平滑滚动；
+- 开源！免费！（已使用 CC-BY-NC-SA 许可协议进行许可）
 
 ## 关于隐私
 **声明** 你在这个页面上输入的任何东西都保存在浏览器的 **本地缓存** ，一个字符都不会上传！如果你不放心，可以前往这个项目在[Github](https://github.com/Henrylin666/ClearWriter)上，自行阅读源码。
