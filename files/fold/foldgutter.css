@@ -1,0 +1,26 @@
+.CodeMirror-foldmarker {
+  color: var(--main);
+  text-shadow: var(--shadow) 0 0 5px;
+  font-weight: bold;
+  line-height: .3;
+  cursor: pointer;
+  transition:all .3s;
+}
+    .CodeMirror-foldmarker:hover {
+        opacity:.6;
+        text-shadow: var(--shadow) 0 5px 10px;
+    }
+
+    .CodeMirror-foldgutter {
+        width: .7em;
+    }
+.CodeMirror-foldgutter-open,
+.CodeMirror-foldgutter-folded {
+  cursor: pointer;
+}
+.CodeMirror-foldgutter-open:after {
+  content: "\25BE";
+}
+.CodeMirror-foldgutter-folded:after {
+  content: "\25B8";
+}

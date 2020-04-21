@@ -1,0 +1,67 @@
+.CodeMirror-dialog {
+    position: absolute;
+    right: 2%;
+    margin-top: 15px;
+    background: var(--darkback);
+    border-radius: 3px;
+    z-index: 15;
+    padding: .1em .8em;
+    overflow: hidden;
+    color: inherit;
+    box-shadow: var(--shadow) 0 3px 15px;
+    color: #999;
+    transition: all .3s;
+    animation: fade .3s;
+}
+
+.CodeMirror-dialog-top {
+    border-bottom: 1px solid #eee;
+    top: 0;
+}
+
+.CodeMirror-dialog-bottom {
+    border-top: 1px solid #eee;
+    bottom: 0;
+}
+
+.CodeMirror-dialog input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 20em;
+    color: var(--active);
+    transition: color .3s;
+    font-size: 18px;
+}
+
+.CodeMirror-dialog button {
+    font-size: 70%;
+    background: var(--background);
+    color: var(--active);
+    border-radius: 3px;
+    border: none;
+    box-shadow: rgba(0,0,0,0.18) 2px 0 10px;
+    padding: 5px 10px;
+    text-align: center;
+    margin: 5px .5% 5px .5%;
+    outline: none;
+    line-height: 20px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+    .CodeMirror-dialog button:hover {
+        transform: scale(1.07);
+    }
+
+    .CodeMirror-dialog button:active {
+        transform: scale(.9);
+    }
+
+.CodeMirror-search-hint {
+    font-size: 14px;
+}
+
+*::selection {
+    background-color: var(--selection) !important;
+}

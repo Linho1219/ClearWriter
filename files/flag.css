@@ -1,0 +1,23 @@
+﻿.flag {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    display: inline-block;
+    background-image: url(./flag.png);
+    background-repeat: no-repeat;
+    background-size: 528px 1200px;
+    background-color:#fff;
+    transform:scale(.8) translateY(13px);
+    margin:0 10px;
+}
+#cn {
+    background-position: -128px -224px;
+}
+
+#hk{
+    background-position:-176px -464px;
+}
+
+#us {
+    background-position: -368px -1088px;
+}
