@@ -153,40 +153,42 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
 
 ## 为什么编写 Clear Writer
 
+我开了我自己的博客之后，一直苦于 Windows 端没有我喜欢的 Markdown 编辑器。
+
 &#x3E; 其实写作，最需要的并不是很好很强大的工具，而是一个不易让人分心的环境。
 
-Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个闲钱去买正版（毕竟 Win 端一百多块，Mac 端两百多块）。我找到了一个类似的软件，叫做 [4Me 写字板](http://write4Me.sinaapp.com/)。它基于 CodeMirror。但是，它和 iA Writer 的差距未免有点大……
+Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个经济实力去买正版。我也不打算用盗版。我找到了一个类似的软件，叫做 [4Me 写字板](http://write4Me.sinaapp.com/)。它基于 CodeMirror。但是，它和 iA Writer 的差距未免有点大……
 
-但这却给了我一个启发：为什么不自己试着用 CodeMirror 制作一个“自己的” iA Writer 呢？
+但这却给了我一个启发：为什么不自己动手试着用 CodeMirror 制作一个 Markdown 编辑器呢？
 
-于是我征求了原作者同意之后，借着这次因新冠肺炎疫情宅家的时间，尝试自己以 4Me 写字板为启发，制作自己的写作工具。于是我做出了这个文本编辑器 —— Clear Writer，意味着希望人们使用它时，可以让人理清自己的思维。
+于是我征求了原作者同意之后，借着这次因新冠疫情宅家的时间，尝试自己以 4Me 写字板为蓝本，制作自己的写作工具。于是我做出了这个 Markdown 编辑器 —— Clear Writer，意味着希望人们使用它时，可以让人理清自己的思维。
 
-另外，Clear Writer 的一个很重要的一点是它支持实时 Markdown 语法。普通的所谓实时 Markdown，我都不是很喜欢——因为它们会把 Markdown 格式标记隐去。我不喜欢这样，我喜欢让格式牢牢掌控在使用者的手里。
+另外，Clear Writer 的一个很重要的一点是它支持实时 Markdown 语法。很多的所谓实时 Markdown，我都不是很喜欢——因为它们会把 Markdown 格式标记隐去。我不喜欢这样，我喜欢让格式牢牢掌控在使用者的手里。
 
 ## Clear Writer 的特点
-
 - 全自动保存；
-- 支持所见即所得实时 MarkDown 语法，标题悬挂；
+- 所见即所得的实时 MarkDown，以及标题悬挂；
 - 支持亮色 / 暗色模式；
 - 漂亮的隐藏式滚动条；
-- 支持简体中文 / 繁体中文 / 英文三种语言（繁体中文是机翻的，英文是我一个一个字自己翻译的）；
+- 支持简体中文 / 繁体中文 / 英文三种语言；
 - 支持开启 / 关闭行号；
 - 高亮当前段落；
 - 漂亮的光标闪动和跳动效果；
 - 界面自适应；
 - 内容全部在本地缓存，完全隐私保护；
-- 支持导出 `.txt`、`.md`、`.doc` 3 种格式；
+- 支持导出 `.txt`、`.md`、`.doc`、`.html`、带 CSS 的 `html` 5 种格式；
 - 平滑滚动；
+- 可让你立即进入状态的”闪念“功能（v1.7+）。
 
 ## 使用技巧
 
 - 点击顶栏上的全屏按钮或按下 `F11`（或 `Fn + F11`）切入全屏，安心写作；
 - 鼠标移动至顶部时显示顶栏，其中可以切换亮/暗色模式、行号、语言等；
 - 点击顶栏上的图钉 `📌` 按钮可以固定顶栏，使其不自动隐藏；
-- 右上角有 `另存为...` 按钮，点击可以将文字导出为 `.txt`、``、`` 格式文本；
+- 右上角有 `另存为...` 按钮，点击可以将文字导出为其他格式文本；
 - 点击左上角的 `Clear Writer` 会在侧边栏显示你现在正在看的这段文字，再次点击 `Clear Writer` 隐藏侧边栏；
-- 可撤销最近的2000次操作，无惧修改；
-- Clear Writer 全自动保存，正常情况下每5分钟自动保存一次，在关闭的时候也会再次自动保存一次。实在不放心，还可以 `Ctrl + S` 手动保存；
+- 可撤销最近的 2000 次操作，无惧修改；
+- Clear Writer 全自动保存，正常情况下每 3 分钟自动保存一次，在关闭的时候也会再次自动保存一次。实在不放心，还可以 `Ctrl + S` 手动保存；
 - 查找：`Ctrl + F`；
 - 查找下一个：`Ctrl + G`；
 - 查找上一个：`Shift + Ctrl + G`；
@@ -197,6 +199,23 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
 
 Windows 7 及以上。
 
+## 关于
+
+Clear Writer 使用 GNU General Public License 3.0 进行许可。
+
+编码工具：Visual Studio
+安装包制作工具：NSIS
+
+### Clear Writer 的诞生离不开：
+
+- 西文字体：NeverMind（SIL Open Font License 1.1）；
+- 中文字体：思源黑体（SIL Open Font License 1.1）；
+- 编辑器基础：CodeMirror（MIT License）；
+- Markdown 渲染：editor.md（MIT License）；
+- 构建基础：Electron（MIT License）；
+- 蓝本：4Me Writer，无协议状态，但已经开发者口头许可。
+
+衷心感谢所有为本项目提供支持与帮助的人。
 </textarea>
         </form>
     </div>
@@ -297,6 +316,7 @@ Windows 7 及以上。
         if (localStorage.disable_animation == 1) {
             document.getElementById('advanced_control').innerHTML = "*{transition:none !important;animation:none !important} *:after{transition:none !important;}";
         }
+        const default_text = '# Welcome to Clear Writer，这是一个沉浸式 Markdown 写作软件。\n\n## 为什么编写 Clear Writer\n\n我开了我自己的博客之后，一直苦于 Windows 端没有我喜欢的 Markdown 编辑器。\n\n> 其实写作，最需要的并不是很好很强大的工具，而是一个不易让人分心的环境。\n\nMac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个经济实力去买正版。我也不打算用盗版。我找到了一个类似的软件，叫做 [4Me 写字板](http://write4Me.sinaapp.com/)。它基于 CodeMirror。但是，它和 iA Writer 的差距未免有点大……\n\n但这却给了我一个启发：为什么不自己动手试着用 CodeMirror 制作一个 Markdown 编辑器呢？\n\n于是我征求了原作者同意之后，借着这次因新冠疫情宅家的时间，尝试自己以 4Me 写字板为蓝本，制作自己的写作工具。于是我做出了这个 Markdown 编辑器 —— Clear Writer，意味着希望人们使用它时，可以让人理清自己的思维。\n\n另外，Clear Writer 的一个很重要的一点是它支持实时 Markdown 语法。很多的所谓实时 Markdown，我都不是很喜欢——因为它们会把 Markdown 格式标记隐去。我不喜欢这样，我喜欢让格式牢牢掌控在使用者的手里。\n\n## Clear Writer 的特点\n- 全自动保存；\n- 所见即所得的实时 MarkDown，以及标题悬挂；\n- 支持亮色 / 暗色模式；\n- 漂亮的隐藏式滚动条；\n- 支持简体中文 / 繁体中文 / 英文三种语言；\n- 支持开启 / 关闭行号；\n- 高亮当前段落；\n- 漂亮的光标闪动和跳动效果；\n- 界面自适应；\n- 内容全部在本地缓存，完全隐私保护；\n- 支持导出 `.txt`、`.md`、`.doc`、`.html`、带 CSS 的 `html` 5 种格式；\n- 平滑滚动；\n- 可让你立即进入状态的”闪念“功能（v1.7+）。\n\n## 使用技巧\n\n- 点击顶栏上的全屏按钮或按下 `F11`（或 `Fn + F11`）切入全屏，安心写作；\n- 鼠标移动至顶部时显示顶栏，其中可以切换亮/暗色模式、行号、语言等；\n- 点击顶栏上的图钉 `📌` 按钮可以固定顶栏，使其不自动隐藏；\n- 右上角有 `另存为...` 按钮，点击可以将文字导出为其他格式文本；\n- 点击左上角的 `Clear Writer` 会在侧边栏显示你现在正在看的这段文字，再次点击 `Clear Writer` 隐藏侧边栏；\n- 可撤销最近的 2000 次操作，无惧修改；\n- Clear Writer 全自动保存，正常情况下每 3 分钟自动保存一次，在关闭的时候也会再次自动保存一次。实在不放心，还可以 `Ctrl + S` 手动保存；\n- 查找：`Ctrl + F`；\n- 查找下一个：`Ctrl + G`；\n- 查找上一个：`Shift + Ctrl + G`；\n- 替换：`Shift + Ctrl + F`；\n- 替换全部：`Shift + Ctrl + R`。\n\n## 兼容性\n\nWindows 7 及以上。\n\n## 关于\n\nClear Writer 使用 GNU General Public License 3.0 进行许可。\n\n编码工具：Visual Studio\n安装包制作工具：NSIS\n\n### Clear Writer 的诞生离不开：\n\n- 西文字体：NeverMind（SIL Open Font License 1.1）；\n- 中文字体：思源黑体（SIL Open Font License 1.1）；\n- 编辑器基础：CodeMirror（MIT License）；\n- Markdown 渲染：editor.md（MIT License）；\n- 构建基础：Electron（MIT License）；\n- 蓝本：4Me Writer，无协议状态，但已经开发者口头许可。\n\n衷心感谢所有为本项目提供支持与帮助的人。';
         //亮色模式CSS常量定义
         const darktheme = "*{--background:#1A1C1D;--darkback:#252829;--selection:#fff2;--unfocusedselection:#252525;--active:#eee;--line: #222;--scroll:#666;--com:#fff1;--shadow:rgba(255,255,255,.3)}";
         //暗色模式CSS常量定义
@@ -395,7 +415,7 @@ Windows 7 及以上。
                     $("#tools").html("Tools");
                     $('#preview').html("Preview");
                     $("#save_btn").html("Save as...");
-                    $("#about").html('<h1># About Clear Writer</h1><p>Coming soon...</p></article>');
+                    $("#about").html('<div id="preview_box" class="markdown-body editormd-html-preview"><h1 id="h1-welcome-to-clear-writer-an-immersive-markdown-writing-software-"><a name="Welcome to Clear Writer, an immersive Markdown writing software." class="reference-link"></a><span class="header-link octicon octicon-link"></span>Welcome to Clear Writer, an immersive Markdown writing software.</h1><h2 id="h2-why-to-write-clear-writer"><a name="Why to write Clear Writer" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Why to write Clear Writer</h2><p>After starting my own blog, I’ve been struggling with the lack of a Markdown editor on the Windows that I like.</p><blockquote><p>Actually, we don’t need a very powerful tool for writing. All we need is an environment that can make us not easily distracted.</p></blockquote><p>iA Writer certainly does this well, but as a student, I really didn’t have the means to buy the software. And I don’t plan to use piracy either. I found a silimar software called <a href="http://write4Me.sinaapp.com/">4Me Writer</a>. It is based on CodeMirror, but the difference between it and iA Writer is a bit large….</p><p>But it did inspire me: why not try making a Markdown editor with CodeMirror myself?</p><p>So after asking the original author’s permission, I took the time to try to make my own writing tool using the 4Me writing board as a model. So I made this Markdown editor — Clear Writer — meaning that I wanted people to use it so that they could clear their minds.</p><p>Also, a very important thing about Clear Writer is that it supports real-time Markdown preview. A lot of the so-called real-time Markdowns, I’m not a big fan of - because they hide the Markdown format markup. I don’t like that, I like to keep the format firmly in the hands of the user.</p><h2 id="h2-features-of-clear-writer"><a name="Features of Clear Writer" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Features of Clear Writer</h2><ul><li>Fully automated preservation.</li><li>Real-time MarkDown for WYSIWYG, and title hanging.</li><li>Support bright/dark mode.</li><li>Nice scroll bar.</li><li>Support Simplified Chinese / Traditional Chinese / English.</li><li>Support for turning line numbers on/off.</li><li>Highlight the current paragraph.</li><li>Beautiful cursor flickering and jumping effects.</li><li>Interface adaptation.</li><li>All content is cached locally, with full privacy protection.</li><li>Support for exporting <code>.txt</code>, <code>.md</code>, <code>.doc</code>, <code>.html</code>, <code>html (with CSS)</code> in 5 formats.</li><li>Smooth rolling.</li><li>Quick note (v1.7+) that puts you in a writing state immediately.</li></ul><h2 id="h2-tips-for-using"><a name="Tips for using" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Tips for using</h2><ul><li>Writing with peace of mind by clicking the full screen button on the title bar or by pressing <code>F11</code> (or <code>Fn + F11</code>) to go full screen.</li><li>The top bar is displayed when the mouse is moved to the top, where it is possible to switch between light/dark modes, line numbers, language, etc.</li><li>The top bar can be fixed so that it is not automatically hidden by clicking the <code>📌</code> button on the top bar.</li><li>The upper right corner has the <code>Save as...</code> button, which allows the text to be exported to other text formats.</li><li>Clicking on <code>Clear Writer</code> in the upper left corner will display the text you are reading right now — this article — in the sidebar, and clicking on <code>Clear Writer</code> again will hide the sidebar.</li><li>The last 2000 operations can be revoked without fear of modification.</li><li>Clear Writer saves automatically, normally every 3 minutes, and again when it is closed. If you are not sure, you can also save it manually by <code>Ctrl + S</code>.</li><li>Search: <code>Ctrl + F</code>.</li><li>Find the next one: <code>Ctrl + G</code>.</li><li>Find previous: <code>Shift + Ctrl + G</code>.</li><li>Replace: <code>Shift + Ctrl + F</code>.</li><li>Replace all: <code>Shift + Ctrl + R</code>.</li></ul><h2 id="h2-compatibility"><a name="Compatibility" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Compatibility</h2><p>Windows 7+.</p><h2 id="h2-about-"><a name="About." class="reference-link"></a><span class="header-link octicon octicon-link"></span>About.</h2><p>Clear Writer is licensed under the GNU General Public License 3.0.</p><p>Coding tool: Visual Studio<br>Installer creation tool: NSIS</p><h3 id="h3-clear-writer-was-born-from-"><a name="Clear Writer was born from." class="reference-link"></a><span class="header-link octicon octicon-link"></span>Clear Writer was born from.</h3><ul><li>Font: NeverMind (SIL Open Font License 1.1), Noto Sans (SIL Open Font License 1.1).</li><li>Editorial basis: CodeMirror (MIT License).</li><li>Markdown rendering: editor.md (MIT License).</li><li>Building blocks: Electron (MIT License).</li><li>Blueprint: 4Me Writer, no agreement status, but has been orally licensed by the developer.</li></ul><p>Thanks to all those who have supported and helped with this project.</p></div>');
                     $("#copy").html("Copy");
                     $("#paste").html("Paste");
                     $("#cut").html("Cut");
@@ -461,7 +481,7 @@ Windows 7 及以上。
                     $("#title_of_lang").html("語言");
                     $("#lang").html("繁體中文");
                     $("#save_btn").html("另存為...");
-                    $("#about").html('<h1><a name=“關於Clear Writer”class=“reference-link”></a><span class=“header-link octicon octicon-link”></span>關於Clear Writer</h1><h2><a name=“為什麼編寫Clear Writer”class=“reference-link”></a><span class=“header-link octicon octicon-link”></span>為什麼編寫Clear Writer</h2><blockquote><p>其實寫作，最需要的並不是很好很强大的工具，而是一個不易讓人分心的環境。</p> </blockquote> <p>Mac上的iA Writer固然能很好地做到這一點，但作為一個初二學生，我確實也沒有那個閒錢去買正版（畢竟Win端一百多塊，Mac端兩百多塊）。我找到了一個類似的軟件，叫做<a href="http://write4Me.sinaapp.com/" target="_blank">4Me寫字板</a>。它基於CodeMirror。但是，它和iA Writer的差距未免有點大。</p> <p>但這卻給了我一個啟發：為什麼不自己試著用CodeMirror製作一個“自己的”iA Writer呢？</p> <p>於是我徵求了原作者同意之後，借著這次因武漢肺炎疫情宅家的時間，嘗試自己以4Me寫字板為啟發，製作自己的寫作工具。於是我做出了這個很像iA Writer的文字編輯器——Clear Writer，意味著希望人們使用它時，可以讓人“clear”自己的思維。</p> <h2><a name=“Clear Writer的特點”class=“reference-link”></a><span class=“header-link octicon octicon-link”></span>Clear Writer的特點</h2><ul> <li>全自動保存；</li><li>支持實时MarkDown語法，標題懸掛；</li><li>基於瀏覽器，支持Chrome / Firefox / Edge（不支持IE），但不支持移動端（有誰會用手機來寫作呢）；</li><li>支持亮色/暗色模式；</li><li>Chrome上支持漂亮的隱藏式滾動條；</li><li>支持簡體中文/繁體中文/英文三種語言（繁體中文是機翻的，英文是我一個一個字自己翻譯的）；</li><li>支持開啟/關閉行號；</li><li>高亮當前段落；</li><li>漂亮的光標閃動和跳動效果；</li><li>介面自我調整；</li><li>內容全部在本地緩存，完全隱私保護；</li><li>支持匯出<code>.txt</code>格式；</li><li>平滑滾動；</li ><li>開源！免費！</li></ul> <h2><a name=“使用技巧”class=“reference-link”></a><span class=“header-link octicon octicon-link”></span>使用技巧</h2><ul> <li>點擊頂欄上的全屏按鈕或按下<code>F11</code>（或<code>Fn +F11</code>）切入全屏，安心寫作；</li><li>滑鼠移動至頂部時顯示頂欄，其中可以切換亮/暗色模式、行號、語言等；</li><li>點擊頂欄上的圖釘<code>📌</code>按鈕可以固定頂欄，使其不自動隱藏；</li><li>右上角有<code>另存為…</code>按鈕，點擊可以將文字匯出為<code>.txt</code>格式文字（也可以直接將副檔名改為<code>.md</code>）；</li><li>點擊左上角的<code>Clear Writer</code>會在側邊欄顯示你現在正在看的這段文字，再次點擊<code>Clear Writer</code>隱藏側邊欄；</li><li>可按<code>Ctrl + Z</code>撤銷最近的2000次操作，無懼修改；</li><li>Clear Writer全自動保存，正常情况下每5分鐘自動保存一次，在關閉的時候也會再次自動保存一次。實在不放心，還可以<code>Ctrl + S</code>手動保存；</li><li>查找：<code>Ctrl + F</code>；</li><li>查找下一個：<code>Ctrl + G</code>；</li><li>查找上一個：<code>Shift + Ctrl + G</code>；</li><li>替換：<code> Shift + Ctrl + F</code>；</li><li>替換全部：<code>Shift + Ctrl + R</code>。</li></ul> <h2><a name=“相容性”class=“reference-link”></a><span class=“header-link octicon octicon-link”></span>相容性</h2><h3 ><a name=“線上版：”class=“reference-link”></a><span class=“header-link octicon octicon-link”></span>線上版：</h3><ul> <li>✔Chrome</li><li>✔Firefox</li><li>✔Edge</li><li>❌IE<br><strong>注意：不再相容Internet Exporler瀏覽器——原因很簡單，第一，用IE寫作的人的頭腦大概率不會“Clear”；第二，相容古老的IE真的很痛苦……</strong></li></ul> <h3><a name=“離線版：”class=“reference-link”></a><span class=“header-link octicon octicon-link”></span>離線版：</h3><p>Windows 7及以上。</p> <h2><a name=“關於”class=“reference-link”></a><span class=“header-link octicon octicon-link”></span>關於</h2><p>Clear Writer使用GNU General Public License進行許可。</p> <p><strong>所使用的字體：</strong></p> <ul> <li>西文字體：NeverMind，使用SIL Open Font License 1.1進行許可；</li><li>中文字體：思源黑體，使用SIL Open Font License 1.1進行許可。</li></ul> <p><strong>相關：</strong></p> <ul> <li>CodeMirror，使用MIT License進行許可；</li><li>4Me Writer，無協定狀態。</li></ul> <p>衷心感謝所有為本項目提供支援與幫助的人。</p>');
+                    $("#about").html('<h1 id="h1-welcome-to-clear-writer-markdown-"><a name="Welcome to Clear Writer，這是一個沉浸式 Markdown 寫作軟件。" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Welcome to Clear Writer，這是一個沉浸式 Markdown 寫作軟件。</h1><h2 id="h2--clear-writer"><a name="為什麼編寫 Clear Writer" class="reference-link"></a><span class="header-link octicon octicon-link"></span>為什麼編寫 Clear Writer</h2><p>我開了我自己的部落格之後，一直苦於Windows端沒有我喜歡的Markdown編輯器。</p><blockquote><p>其實寫作，最需要的並不是很好很强大的工具，而是一個不易讓人分心的環境。</p></blockquote><p>Mac上的iA Writer固然能很好地做到這一點，但作為一個初二學生，我確實也沒有那個經濟實力去買正版。我也不打算用盜版。我找到了一個類似的軟件，叫做[4Me寫字板]（<a href="http://write4Me.sinaapp.com/）。它基於CodeMirror。但是，它和iA">http://write4Me.sinaapp.com/）。它基於CodeMirror。但是，它和iA</a> Writer的差距未免有點大……</p><p>但這卻給了我一個啟發：為什麼不自己動手試著用CodeMirror製作一個Markdown編輯器呢？</p><p>於是我徵求了原作者同意之後，借著這次因新冠疫情宅家的時間，嘗試自己以4Me寫字板為藍本，製作自己的寫作工具。於是我做出了這個Markdown編輯器——Clear Writer，意味著希望人們使用它時，可以讓人理清自己的思維。</p><p>另外，Clear Writer的一個很重要的一點是它支持實时Markdown語法。很多的所謂實时Markdown，我都不是很喜歡——因為它們會把Markdown格式標記隱去。我不喜歡這樣，我喜歡讓格式牢牢掌控在使用者的手裡。</p><h2 id="h2-clear-writer-"><a name="Clear Writer 的特點" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Clear Writer 的特點</h2><ul><li>全自動保存；</li><li>所見即所得的實时MarkDown，以及標題懸掛；<br>-支持亮色/暗色模式；<br>-漂亮的隱藏式滾動條；<br>-支持簡體中文/繁體中文/英文三種語言；<br>-支持開啟/關閉行號；<br>-高亮當前段落；<br>-漂亮的光標閃動和跳動效果；<br>-介面自我調整；<br>-內容全部在本地緩存，完全隱私保護；<br>-支持匯出<code>.txt</code>、<code>.md</code>、<code>.doc</code>、<code>.html</code>、帶CSS的<code>html</code> 5種格式；<br>-平滑滾動；<br>-可讓你立即進入狀態的”閃念“功能（v1.7+）</li></ul><h2 id="h2-u4F7Fu7528u6280u5DE7"><a name="使用技巧" class="reference-link"></a><span class="header-link octicon octicon-link"></span>使用技巧</h2><ul><li>點擊頂欄上的全屏按鈕或按下<code>F11</code>（或<code>Fn + F11</code>）切入全屏，安心寫作；</li><li>滑鼠移動至頂部時顯示頂欄，其中可以切換亮/暗色模式、行號、語言等；</li><li>點擊頂欄上的圖釘<code>📌</code>按鈕可以固定頂欄，使其不自動隱藏；</li><li>右上角有<code>另存為…</code>按鈕，點擊可以將文字匯出為其他格式文字；</li><li>點擊左上角的<code>Clear Writer</code>會在側邊欄顯示你現在正在看的這段文字，再次點擊<code>Clear Writer</code>隱藏側邊欄；</li><li>可撤銷最近的2000次操作，無懼修改；</li><li>Clear Writer全自動保存，正常情况下每3分鐘自動保存一次，在關閉的時候也會再次自動保存一次。實在不放心，還可以<code>Ctrl + S</code>手動保存；<br>-查找：<code>Ctrl + F</code>；<br>-查找下一個：<code>Ctrl + G</code>；<br>-查找上一個：<code>Shift + Ctrl + G</code>；<br>-替換：<code>Shift + Ctrl + F</code>；<br>-替換全部：<code>Shift + Ctrl + R</code>。</li></ul><h2 id="h2-u76F8u5BB9u6027"><a name="相容性" class="reference-link"></a><span class="header-link octicon octicon-link"></span>相容性</h2><p>Windows 7及以上。</p><h2 id="h2-u95DCu65BC"><a name="關於" class="reference-link"></a><span class="header-link octicon octicon-link"></span>關於</h2><p>Clear Writer使用GNU General Public License 3.0進行許可。</p><p>編碼工具：Visual Studio<br>安裝包製作工具：NSIS</p><h3 id="h3-clear-writer-"><a name="Clear Writer的誕生離不開：" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Clear Writer的誕生離不開：</h3><ul><li>西文字體：NeverMind（SIL Open Font License 1.1）；</li><li>中文字體：思源黑體（SIL Open Font License 1.1）；</li><li>編輯器基礎：CodeMirror（MIT License）；</li><li>Markdown渲染：editor.md（MIT License）；</li><li>構建基礎：Electron（MIT License）；</li><li>藍本：4Me Writer，無協定狀態，但已經開發者口頭許可。</li></ul><p>衷心感謝所有為本項目提供支援與幫助的人。</p>');
                     $("#cut").html("剪切");
                     $("#copy").html('複製');
                     $("#paste").html('粘貼');
@@ -526,7 +546,7 @@ Windows 7 及以上。
                     $("#tools").html("工具");
                     $('#preview').html("预览");
                     $("#save_btn").html("另存为...");
-                    $("#about").html('<h1><a name="关于 Clear Writer" class="reference-link"></a><span class="header-link octicon octicon-link"></span>关于 Clear Writer</h1><h2><a name="为什么编写 Clear Writer" class="reference-link"></a><span class="header-link octicon octicon-link"></span>为什么编写 Clear Writer</h2> <p class="quote">其实写作，最需要的并不是很好很强大的工具，而是一个不易让人分心的环境。</p> <p>Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个闲钱去买正版（毕竟 Win 端一百多块，Mac 端两百多块）。我找到了一个类似的软件，叫做 <a href="http://write4Me.sinaapp.com/" target="_blank">4Me 写字板</a>。它基于 CodeMirror。但是，它和 iA Writer 的差距未免有点大。</p> <p>但这却给了我一个启发：为什么不自己试着用 CodeMirror 制作一个“自己的” iA Writer 呢？</p> <p>于是我征求了原作者同意之后，借着这次因武汉肺炎疫情宅家的时间，尝试自己以 4Me 写字板为启发，制作自己的写作工具。于是我做出了这个很像 iA Writer 的文本编辑器 —— Clear Writer，意味着希望人们使用它时，可以让人“clear”自己的思维。</p> <h2><a name="Clear Writer 的特点" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Clear Writer 的特点</h2><ul> <li>全自动保存；</li><li>支持实时 MarkDown 语法，标题悬挂；</li><li>基于浏览器，支持 Chrome / Firefox / Edge（不支持 IE），但不支持移动端（有谁会用手机来写作呢）；</li><li>支持亮色 / 暗色模式；</li><li>Chrome 上支持漂亮的隐藏式滚动条；</li><li>支持简体中文 / 繁体中文 / 英文三种语言（繁体中文是机翻的，英文是我一个一个字自己翻译的）；</li><li>支持开启 / 关闭行号；</li><li>高亮当前段落；</li><li>漂亮的光标闪动和跳动效果；</li><li>界面自适应；</li><li>内容全部在本地缓存，完全隐私保护；</li><li>支持导出 <code>.txt</code> 格式；</li><li>平滑滚动；</li><li>开源！免费！</li></ul> <h2><a name="使用技巧" class="reference-link"></a><span class="header-link octicon octicon-link"></span>使用技巧</h2><ul> <li>点击顶栏上的全屏按钮或按下 <code>F11</code>（或 <code>Fn + F11</code>）切入全屏，安心写作；</li><li>鼠标移动至顶部时显示顶栏，其中可以切换亮/暗色模式、行号、语言等；</li><li>点击顶栏上的图钉 <code>📌</code> 按钮可以固定顶栏，使其不自动隐藏；</li><li>右上角有 <code>另存为...</code> 按钮，点击可以将文字导出为 <code>.txt</code> 格式文本（也可以直接将扩展名改为 <code>.md</code> ）；</li><li>点击左上角的 <code>Clear Writer</code> 会在侧边栏显示你现在正在看的这段文字，再次点击 <code>Clear Writer</code> 隐藏侧边栏；</li><li>可按 <code>Ctrl + Z</code> 撤销最近的2000次操作，无惧修改；</li><li>Clear Writer 全自动保存，正常情况下每5分钟自动保存一次，在关闭的时候也会再次自动保存一次。实在不放心，还可以 <code>Ctrl + S</code> 手动保存；</li><li>查找：<code>Ctrl + F</code>；</li><li>查找下一个：<code>Ctrl + G</code>；</li><li>查找上一个：<code>Shift + Ctrl + G</code>；</li><li>替换：<code>Shift + Ctrl + F</code>；</li><li>替换全部：<code>Shift + Ctrl + R</code>。</li></ul> <h2><a name="兼容性" class="reference-link"></a><span class="header-link octicon octicon-link"></span>兼容性</h2><h3><a name="在线版：" class="reference-link"></a><span class="header-link octicon octicon-link"></span>在线版：</h3><ul> <li>✔ Chrome</li><li>✔ Firefox</li><li>✔ Edge</li><li>❌ IE<br><strong>注意：不再兼容 Internet Exporler 浏览器 —— 原因很简单，第一，用 IE 写作的人的头脑大概率不会“Clear”；第二，兼容古老的IE真的很痛苦……</strong></li></ul> <h3><a name="离线版：" class="reference-link"></a><span class="header-link octicon octicon-link"></span>离线版：</h3><p>Windows 7 及以上。</p> <h2><a name="关于" class="reference-link"></a><span class="header-link octicon octicon-link"></span>关于</h2><p>Clear Writer 使用 GNU General Public License 进行许可。</p> <p><strong>所使用的字体：</strong></p> <ul> <li>西文字体：NeverMind，使用 SIL Open Font License 1.1 进行许可；</li><li>中文字体：思源黑体，使用 SIL Open Font License 1.1 进行许可。</li></ul> <p><strong>相关：</strong></p> <ul> <li>CodeMirror，使用 MIT License 进行许可；</li><li>4Me Writer，无协议状态。</li></ul> <p>衷心感谢所有为本项目提供支持与帮助的人。</p>');
+                    $("#about").html('<h1 id="h1-welcome-to-clear-writer-markdown-"><a name="Welcome to Clear Writer，这是一个沉浸式 Markdown 写作软件。" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Welcome to Clear Writer，这是一个沉浸式 Markdown 写作软件。</h1><h2 id="h2--clear-writer"><a name="为什么编写 Clear Writer" class="reference-link"></a><span class="header-link octicon octicon-link"></span>为什么编写 Clear Writer</h2><p>我开了我自己的博客之后，一直苦于 Windows 端没有我喜欢的 Markdown 编辑器。</p><blockquote><p>其实写作，最需要的并不是很好很强大的工具，而是一个不易让人分心的环境。</p></blockquote><p>Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学生，我确实也没有那个经济实力去买正版。我也不打算用盗版。我找到了一个类似的软件，叫做 <a href="http://write4Me.sinaapp.com/">4Me 写字板</a>。它基于 CodeMirror。但是，它和 iA Writer 的差距未免有点大……</p><p>但这却给了我一个启发：为什么不自己动手试着用 CodeMirror 制作一个 Markdown 编辑器呢？</p><p>于是我征求了原作者同意之后，借着这次因新冠疫情宅家的时间，尝试自己以 4Me 写字板为蓝本，制作自己的写作工具。于是我做出了这个 Markdown 编辑器 —— Clear Writer，意味着希望人们使用它时，可以让人理清自己的思维。</p><p>另外，Clear Writer 的一个很重要的一点是它支持实时 Markdown 语法。很多的所谓实时 Markdown，我都不是很喜欢——因为它们会把 Markdown 格式标记隐去。我不喜欢这样，我喜欢让格式牢牢掌控在使用者的手里。</p><h2 id="h2-clear-writer-"><a name="Clear Writer 的特点" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Clear Writer 的特点</h2><ul><li>全自动保存；</li><li>所见即所得的实时 MarkDown，以及标题悬挂；</li><li>支持亮色 / 暗色模式；</li><li>漂亮的隐藏式滚动条；</li><li>支持简体中文 / 繁体中文 / 英文三种语言；</li><li>支持开启 / 关闭行号；</li><li>高亮当前段落；</li><li>漂亮的光标闪动和跳动效果；</li><li>界面自适应；</li><li>内容全部在本地缓存，完全隐私保护；</li><li>支持导出 <code>.txt</code>、<code>.md</code>、<code>.doc</code>、<code>.html</code>、带 CSS 的 <code>html</code> 5 种格式；</li><li>平滑滚动；</li><li>可让你立即进入状态的”闪念“功能（v1.7+）。</li></ul><h2 id="h2-u4F7Fu7528u6280u5DE7"><a name="使用技巧" class="reference-link"></a><span class="header-link octicon octicon-link"></span>使用技巧</h2><ul><li>点击顶栏上的全屏按钮或按下 <code>F11</code>（或 <code>Fn + F11</code>）切入全屏，安心写作；</li><li>鼠标移动至顶部时显示顶栏，其中可以切换亮/暗色模式、行号、语言等；</li><li>点击顶栏上的图钉 <code>📌</code> 按钮可以固定顶栏，使其不自动隐藏；</li><li>右上角有 <code>另存为...</code> 按钮，点击可以将文字导出为其他格式文本；</li><li>点击左上角的 <code>Clear Writer</code> 会在侧边栏显示你现在正在看的这段文字，再次点击 <code>Clear Writer</code> 隐藏侧边栏；</li><li>可撤销最近的 2000 次操作，无惧修改；</li><li>Clear Writer 全自动保存，正常情况下每 3 分钟自动保存一次，在关闭的时候也会再次自动保存一次。实在不放心，还可以 <code>Ctrl + S</code> 手动保存；</li><li>查找：<code>Ctrl + F</code>；</li><li>查找下一个：<code>Ctrl + G</code>；</li><li>查找上一个：<code>Shift + Ctrl + G</code>；</li><li>替换：<code>Shift + Ctrl + F</code>；</li><li>替换全部：<code>Shift + Ctrl + R</code>。</li></ul><h2 id="h2-u517Cu5BB9u6027"><a name="兼容性" class="reference-link"></a><span class="header-link octicon octicon-link"></span>兼容性</h2><p>Windows 7 及以上。</p><h2 id="h2-u5173u4E8E"><a name="关于" class="reference-link"></a><span class="header-link octicon octicon-link"></span>关于</h2><p>Clear Writer 使用 GNU General Public License 3.0 进行许可。</p><p>编码工具：Visual Studio<br>安装包制作工具：NSIS</p><h3 id="h3-clear-writer-"><a name="Clear Writer 的诞生离不开：" class="reference-link"></a><span class="header-link octicon octicon-link"></span>Clear Writer 的诞生离不开：</h3><ul><li>西文字体：NeverMind（SIL Open Font License 1.1）；</li><li>中文字体：思源黑体（SIL Open Font License 1.1）；</li><li>编辑器基础：CodeMirror（MIT License）；</li><li>Markdown 渲染：editor.md（MIT License）；</li><li>构建基础：Electron（MIT License）；</li><li>蓝本：4Me Writer，无协议状态，但已经开发者口头许可。</li></ul><p>衷心感谢所有为本项目提供支持与帮助的人。</p><h2 id="h2-u66F4u65B0u65E5u5FD7"><a name="更新日志" class="reference-link"></a><span class="header-link octicon octicon-link"></span>更新日志</h2><h3 id="h3-v1-7"><a name="v1.7" class="reference-link"></a><span class="header-link octicon octicon-link"></span>v1.7</h3><ul><li>新增新建文件时的回车快捷确认；</li><li>修复标题中插入 HTML 标签时的异常；</li><li>新增禁用动画选项，以保证能在低配置环境下运行；</li><li>新增查找栏的动画效果；</li><li>修复程序体积过大的问题；</li><li>大幅缩短程序加载时长；</li><li>新增 <code>html</code> 和 <code>带 CSS 的 html</code> 的文件另存支持。</li></ul><h3 id="h3-v1-6"><a name="v1.6" class="reference-link"></a><span class="header-link octicon octicon-link"></span>v1.6</h3><ul><li>优化主题色选择，支持直接跟随系统主题色（仅 Windows 10）；</li><li>优化亮色/暗色模式适配，支持跟随系统亮色/暗色模式（仅 Windows 10）；</li><li>新增全新的开始屏幕磁贴（仅 Windows 10）；</li><li>修复“预览”窗格中 HTML 代码块未被正常高亮的问题；</li><li>在正文编辑的代码块中使用等宽字体 Consolas，带来原汁原味的代码风；</li><li>新增对 Python、PHP、ruby 和 go 语言的代码块高亮支持；</li></ul><h3 id="h3-v1-5"><a name="v1.5" class="reference-link"></a><span class="header-link octicon octicon-link"></span>v1.5</h3><ul><li>修复两个弹窗并行时的一个 BUG；</li><li>修复“折叠”“剪切”按钮未翻译的问题；</li><li>修复了全屏模式下点击最大化/还原按钮无反应的 BUG；</li><li>新增打开、切换文件时标题栏的切换动画；</li><li>新增“另存为”格式：.md、.doc；</li><li>新增预览时的代码块高亮；</li><li>新增删除文件时的“取消”按钮；</li><li>新增覆盖输入模式下（按Insert键进入）的特有光标，以和插入模式区别开来</li></ul><h3 id="h3-v1-4"><a name="v1.4" class="reference-link"></a><span class="header-link octicon octicon-link"></span>v1.4</h3><ul><li>修复了在重命名文件之后文件内容丢失的 BUG； </li><li>修复了在切换文件后快捷键定义重复现象的 BUG；</li><li>抛弃系统自带的标题栏，自己做了一个更漂亮的；</li><li>新增统计功能（统计的是最终生成的文本，不包含 Markdown 语法字符）。</li></ul><h3 id="h3-v1-3"><a name="v1.3" class="reference-link"></a><span class="header-link octicon octicon-link"></span>v1.3</h3><ul><li>更新内核为 Chromium 82；</li><li>支持更改主题色（”主题“组下），自定义你的 Clear Writer；</li><li>标题栏优化：鼠标悬停在组标题上时才显示按钮；</li><li>大幅缩短切换文件、切换语言的用时；</li><li>优化语言切换方式；</li><li>增加右键菜单项目，现支持 11 种操作，如加粗、斜体等，解救鼠标党；</li><li>在标题栏的”工具“组下新增”查找“”查找下一个“”替换“按钮，解救鼠标党；</li><li>新增 Markdown 标题段落折叠。</li></ul><h3 id="h3-v1-2"><a name="v1.2" class="reference-link"></a><span class="header-link octicon octicon-link"></span>v1.2</h3><ul><li>新图标；</li><li>新增预览窗口。</li></ul><h3 id="h3-v1-1"><a name="v1.1" class="reference-link"></a><span class="header-link octicon octicon-link"></span>v1.1</h3><ul><li>新增右键菜单；</li><li>新增“从文件新建”功能。</li></ul>');
                     $("#copy").html("复制");
                     $("#paste").html("粘贴");
                     $("#cut").html("剪切");
@@ -654,20 +674,20 @@ Windows 7 及以上。
             }
             else document.getElementById('main_color_control').innerHTML = '* {--main:' + localStorage.maincolor + '}';
         }
-
-        setTimeout("document.getElementById('preload').style.opacity='0';", 700);
-        setTimeout("document.getElementById('preload').style.display='none';", 880);
+        const preloadtime = 700;
+        setTimeout("document.getElementById('preload').style.opacity='0';", preloadtime);
+        setTimeout("document.getElementById('preload').style.display='none';", preloadtime + 180);
 
         var nameArray = [];
         if (localStorage.nameArray != null) {
             nameArray = JSON.parse(localStorage.nameArray);
-            setTimeout('msgbox(CHOOSE_FILE + "...", build_list(), 35, 25, true);', 700);
+            setTimeout('msgbox(CHOOSE_FILE + "...", build_list(), 35, 25, true);', preloadtime);
         }
         else {
             var list = [];
             localStorage.nameArray = JSON.stringify(list);
             var text = '<ul><li id="new" onclick="new_file()">+ ' + NEW + '...</li></ul>';
-            setTimeout("msgbox(CHOOSE_FILE + '...', text, 35, 25, true)", 700);
+            setTimeout("msgbox(CHOOSE_FILE + '...', text, 35, 25, true)", preloadtime);
         }
         var pcon = document.getElementById('padding_control');
 
@@ -676,6 +696,7 @@ Windows 7 及以上。
             cur_num = num;
             filename = nameArray[num];
             if (window.localStorage.getItem(filename) !== null) editor.setValue(window.localStorage.getItem(filename));
+            else editor.setValue(default_text);
             var topbar = document.getElementById('top_file_name');
             topbar.style.opacity = '0';
             topbar.style.transform = 'translateY(-10px)';
@@ -838,6 +859,7 @@ Windows 7 及以上。
             close_msgbox();
             quicknote = 1;
             document.getElementById('main_color_control').innerHTML = '* {--main:#EA6725}';
+            editor.setValue('');
         }
 
         function check_enter() {
