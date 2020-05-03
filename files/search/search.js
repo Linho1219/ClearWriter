@@ -1,4 +1,4 @@
-// CodeMirror, copyright (c) by Marijn Haverbeke and others
+﻿// CodeMirror, copyright (c) by Marijn Haverbeke and others
 // Distributed under an MIT license: https://codemirror.net/LICENSE
 
 // Define search commands. Depends on dialog.js or another
@@ -64,13 +64,18 @@
             value: deflt,
             selectValueOnOpen: true,
             closeOnEnter: false,
+            closeOnBlur: false,
             onClose: function () { clearSearch(cm); },
             onKeyDown: onKeyDown
         });
     }
 
     function dialog(cm, text, shortText, deflt, f) {
-        if (cm.openDialog) cm.openDialog(text, f, { value: deflt, selectValueOnOpen: true });
+        if (cm.openDialog) cm.openDialog(text, f, {
+            value: deflt,
+            selectValueOnOpen: true,
+            closeOnBlur: false,
+        });
         else f(prompt(shortText, deflt));
     }
 
@@ -193,10 +198,10 @@
 
 
     function getQueryDialog(cm) {
-        return '<span class="CodeMirror-search-label">' + SEARCH + '</span> <input type="text" style="width: 10em" class="CodeMirror-search-field"/> <span style="color: #888" class="CodeMirror-search-hint">(' + SEARCHTIP + ')</span>';
+        return '<span class="CodeMirror-search-label">' + SEARCH + '</span> <input type="text" style="width: 10em" class="CodeMirror-search-field"/> <span style="color: #888" class="CodeMirror-search-hint">' + SEARCHTIP + '</span><span id="dia_close"';
     }
     function getReplaceQueryDialog(cm) {
-        return '<input type="text" style="width: 10em" class="CodeMirror-search-field"/> <span style="color: #888" class="CodeMirror-search-hint">(' + SEARCHTIP + ')</span>';
+        return '<input type="text" style="width: 10em" class="CodeMirror-search-field"/> <span style="color: #888" class="CodeMirror-search-hint">' + SEARCHTIP + '</span>';
     }
     function getReplacementQueryDialog(cm) {
         return '<span class="CodeMirror-search-label">' + RWITH + '</span> <input type="text" style="width: 10em" class="CodeMirror-search-field"/>';

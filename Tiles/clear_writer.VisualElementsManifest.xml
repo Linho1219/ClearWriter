@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <VisualElements
-     ForegroundText="dark"
-     BackgroundColor="#D7D7D7"
+     ForegroundText="light"
+     BackgroundColor="#404040"
      ShowNameOnSquare150x150Logo="on"
      Square150x150Logo="cube.png"
      Square70x70Logo="icon.png">

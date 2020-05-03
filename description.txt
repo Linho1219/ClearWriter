@@ -1,0 +1,13 @@
+我知道你们是肯定不会看那种长篇大论的协议的，所以我就讲几句人话：
+
+· 注意：一定要看新建文件的时候的那些默认文本！一定要看！一定要看！不看的话你就不会用！
+· 使用 GNU General Public License v3.0 许可；
+· 可个人使用，也可免费商用；
+· 所使用的字体：
+      · 西文字体：NeverMind，使用 SIL Open Font License 1.1 进行许可，
+      · 中文字体：思源黑体，使用 SIL Open Font License 1.1 进行许可；
+· 相关项目：
+      · CodeMirror，使用 MIT License 进行许可；
+      · 4Me Writer，无协议状态，但已获得原作者许可： “只要名字不是一样的就行”；
+      · editor.md，使用 MIT License 进行许可；
+      · Electron，使用 MIT License 进行许可。

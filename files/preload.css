@@ -8,6 +8,13 @@
     }
 }
 
+@keyframes fadeInLeftSp {
+    from {
+        opacity: 0;
+        transform: translate(-70%,-50%);
+    }
+}
+
 #preload {
     z-index: 1000;
     position: fixed;
@@ -24,7 +31,7 @@
         left:50%;
         top:43%;
         transform:translate(-50%,-50%);
-        animation:fadeInLeft .8s;
+        animation:fadeInLeftSp .8s;
     }
 
     span[class*="l-"] {

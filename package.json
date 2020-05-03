@@ -1,0 +1,18 @@
+{
+  "author": "Lin Hongping",
+  "dependencies": {},
+  "description": "A peaceful, beautiful and powerful Markdown notepad.",
+  "devDependencies": {
+    "electron": "^8.2.0",
+    "electron-packager": "^14.2.1"
+  },
+  "license": "GPL-3.0",
+  "main": "main.js",
+  "name": "clear_writer",
+  "repository": "https://github.com/Henrylin666/ClearWriter",
+  "scripts": {
+    "package": "electron-packager ./ --win --out ./OutApp --arch=x64 --asar --icon=icon.ico",
+    "start": "electron ."
+  },
+  "version": "1.7.0"
+}

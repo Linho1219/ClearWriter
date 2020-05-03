@@ -48,8 +48,11 @@
       } else {
         if (closed) return;
         closed = true;
-        CodeMirror.rmClass(dialog.parentNode, 'dialog-opened');
-        dialog.parentNode.removeChild(dialog);
+          CodeMirror.rmClass(dialog.parentNode, 'dialog-opened');
+          dialog.style.animation = 'fadeOutRight .5s cubic-bezier(0, 0.6, 0.06, 0.99)'
+          setTimeout(function () {
+              dialog.parentNode.removeChild(dialog);
+          },400)
         me.focus();
 
         if (options.onClose) options.onClose(dialog);

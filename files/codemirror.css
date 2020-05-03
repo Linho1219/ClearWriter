@@ -202,6 +202,7 @@
 .cm-s-default .cm-quote {
     padding-left: 10px;
     font-weight: bold;
+    opacity:.65;
 }
 
 .cm-s-default .cm-hr {
@@ -234,6 +235,10 @@
 }
 
 .cm-string {
+    color: #D68F29;
+}
+
+.cm-url {
     color: rgba(72, 121, 189, .7);
 }
 
@@ -255,29 +260,37 @@
     text-decoration-color: rgba(80,80,80,.7);
 }
 
-.cm-header {
+.cm-header,
+.cm-header ~ span {
     display: inline-block;
 }
 
-.cm-header-1 {
+.cm-header-1,
+.cm-header-1 ~ span{
     transform: translateX(-20.41px);
+    display:inline-block;
 }
 
-.cm-header-2 {
-    transform: translateX(-34.96px);
-}
+    .cm-header-2,
+    .cm-header-2 ~ span {
+        transform: translateX(-34.96px);
+    }
 
-.cm-header-3 {
+.cm-header-3,
+.cm-header-3 ~ span {
     transform: translateX(-49.51px);
 }
 
-.cm-header-4 {
+.cm-header-4,
+.cm-header-4 ~ span {
     transform: translateX(-64.06px);
 }
-.cm-header-5 {
+.cm-header-5,
+.cm-header-5 ~ span {
     transform: translateX(-78.63px);
 }
-.cm-header-6 {
+.cm-header-6,
+.cm-header-6 ~ span {
     transform: translateX(-93.18px);
 }
 
@@ -414,6 +427,7 @@ CodeMirror-activeline-background {
     transition: background .2s;
     border-radius: 13px;
     cursor: default;
+    width:25px
 }
 
     .CodeMirror-vscrollbar:hover {

@@ -7,7 +7,7 @@
 // You can find some technical background for some of the code below
 // at http://marijnhaverbeke.nl/blog/#cm-internals .
 
-//P.S. this file was modified by Lin Hongping.
+//P.S. this script was modified by Lin Hongping.
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :

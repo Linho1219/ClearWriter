@@ -11,13 +11,13 @@
     box-shadow: var(--shadow) 0 3px 15px;
     color: #999;
     transition: all .3s;
-    animation: fade .3s;
+    animation: fadeInRight .5s cubic-bezier(0, 0.6, 0.06, 0.99);
 }
 
-.CodeMirror-dialog-top {
-    border-bottom: 1px solid #eee;
-    top: 0;
-}
+    .CodeMirror-dialog-top {
+        border-bottom: 1px solid #eee;
+        top: 0;
+    }
 
 .CodeMirror-dialog-bottom {
     border-top: 1px solid #eee;
@@ -32,6 +32,10 @@
     color: var(--active);
     transition: color .3s;
     font-size: 18px;
+}
+
+.CodeMirror-dialog *{
+    vertical-align:middle;
 }
 
 .CodeMirror-dialog button {
@@ -60,6 +64,8 @@
 
 .CodeMirror-search-hint {
     font-size: 14px;
+    display:inline-block;
+    line-height:20px;
 }
 
 *::selection {
