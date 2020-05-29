@@ -434,6 +434,8 @@ Clear Writer 使用 GNU General Public License 3.0 进行许可。
                     $("#counter").html(COUNT);
                     $("#clear_search").html('Clear search');
                     $("#fold").html('Fold');
+                    $("#advance").html('Advanced');
+                    $("#disable_animation").html('Disable Animations');
                     break;
                 case 'zh-hk':
                     ON = "開";
@@ -501,6 +503,8 @@ Clear Writer 使用 GNU General Public License 3.0 进行许可。
                     $("#clear_search").html('清除查找');
                     $("#fold").html('折疊');
                     $("#redo").html('重做');
+                    $("#advance").html('高級');
+                    $("#disable_animation").html('禁用動效');
                     break;
                 case 'zh-cn':
                     DARK = "暗";	//暗色模式的显示名称
@@ -565,6 +569,8 @@ Clear Writer 使用 GNU General Public License 3.0 进行许可。
                     $("#counter").html(COUNT);
                     $("#clear_search").html('清除查找');
                     $("#fold").html('折叠');
+                    $("#advance").html('高级');
+                    $("#disable_animation").html('禁用动画');
                     break;
             }
         }
@@ -808,7 +814,7 @@ Clear Writer 使用 GNU General Public License 3.0 进行许可。
                 if (callback) document.getElementById('fname_btn').addEventListener('click', validateForm(0, callback), false);
                 else document.getElementById('fname_btn').addEventListener('click', validateForm(0), false);
             }, 300);
-            
+
         }
 
 
