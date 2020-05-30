@@ -14,5 +14,5 @@
     "package": "electron-packager ./ --win --out ./OutApp --arch=x64 --asar --icon=icon.ico",
     "start": "electron ."
   },
-  "version": "1.7.0"
+  "version": "1.8.0"
 }

@@ -28,6 +28,13 @@
     }
 }
 
+@keyframes guttersFade {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
 @keyframes window-in {
     0% {
         transform: scale(.9) translateZ(0);
@@ -589,6 +596,7 @@ blockquote p {
     cursor: pointer;
     color: #000;
     user-select: none;
+    color:#e00;
 }
 
 #msgbox #description {

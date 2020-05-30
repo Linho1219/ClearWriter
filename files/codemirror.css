@@ -51,9 +51,6 @@
     transition: all .3s;
 }
 
-.CodeMirror-linenumbers {
-}
-
 .CodeMirror-linenumber {
     padding: 0 3px 0 5px;
     min-width: 20px;
@@ -84,7 +81,7 @@
     position: absolute;
     visibility: hidden;
     border-left: 2.7px solid var(--main);
-    transition: all 0.13s !important;
+    transition: all 0.13s;
 }
 
 .CodeMirror-overwrite .CodeMirror-cursor {
@@ -98,9 +95,6 @@
     visibility: visible;
 }
 
-.CodeMirror-cursor {
-    transition: all .3s;
-}
 /* Shown when moving in bi-directional text */
 .CodeMirror div.CodeMirror-secondarycursor {
     border-left: 3px solid silver;
@@ -500,6 +494,7 @@ CodeMirror-activeline-background {
     top: 0;
     min-height: 100%;
     z-index: 3;
+    animation: guttersFade .3s cubic-bezier(0, 0.6, 0.06, 0.99);
 }
 
 .CodeMirror-gutter {

@@ -7264,6 +7264,14 @@
         if (presto && keyCode == lastStoppedKey) { lastStoppedKey = null; e_preventDefault(e); return }
         if ((presto && (!e.which || e.which < 10)) && handleKeyBinding(cm, e)) { return }
         var ch = String.fromCharCode(charCode == null ? keyCode : charCode);
+        var cnt = 0;
+        if (document.querySelector(".cm-header-6") != null) cnt = 6;
+        else if (document.querySelector(".cm-header-5") != null) cnt = 5;
+        else if (document.querySelector(".cm-header-4") != null) cnt = 4;
+        else if (document.querySelector(".cm-header-3") != null) cnt = 3;
+        else if (document.querySelector(".cm-header-2") != null) cnt = 2;
+        else if (document.querySelector(".cm-header-1") != null) cnt = 1;
+        document.getElementById('padding_control').innerHTML = '.CodeMirror pre.CodeMirror-line,CodeMirror pre.CodeMirror-line-like{padding-left:' + ((cnt + 1) * 14.56 + 5.86 + 5) + 'px !important}';
         // Some browsers fire keypress events for backspace
         if (ch == "\x08") { return }
         if (handleCharBinding(cm, e, ch)) { return }
@@ -7340,6 +7348,9 @@
             else { delayBlurEvent(cm); }
         }
     }
+
+
+    
 
     function handleMappedButton(cm, button, pos, repeat, event) {
         var name = "Click";
