@@ -71,11 +71,26 @@
     font-weight: bold;
 }
 
+@font-face {
+    font-family: TERM;
+    src: url('Sarasa-Regular.ttf');
+}
 
-
+@font-face {
+    font-family: TERM;
+    src: url('Sarasa-Bold.ttf');
+    font-weight: bold;
+}
 
 * {
-    --mainfont: BASE-W, BASE-E !important;
+	--mainfont: BASE-W,BASE-E;
+}
+
+.term *{
+	--mainfont: TERM;
+}
+
+* {
     font-family: var(--mainfont);
 }
 
@@ -772,10 +787,8 @@ input#file-upload-button {
             background: var(--line);
         }
 
-body,
-html {
+body {
     background: var(--background);
-    font-family: var(--mainfont),monospace;
 }
 
 
@@ -884,8 +897,8 @@ table {
 }
 
 
-.linenums code * {
-    font-family: Consolas, var(--mainfont) !important;
+code, code * {
+    font-family: TERM, var(--mainfont) !important;
 }
 
 .linenums code {
