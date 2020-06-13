@@ -114,7 +114,7 @@ body, html, .CodeMirror, .cm-comment, #msgbox, .CodeMirror-selected {
     transition: color .3s
 }
 
-#sidebar {
+.sidebar {
     transition: all .3s,left .5s cubic-bezier(0, 0.6, 0.06, 0.99);
 }
 
@@ -127,9 +127,10 @@ html {
     background-color: var(--selection) !important;
 }
 
-#board {
+body {
     height: calc(80% - 40px);
     margin: calc(5% + 40px) 5% 0 5%;
+    position:relative;
 }
 
 #ctn,
@@ -275,7 +276,7 @@ a {
     }
 
 
-#options {
+#topbar {
     position: fixed;
     top: 40px;
     left: 0;
@@ -291,26 +292,26 @@ a {
     user-select: none;
 }
 
-    #options + #header {
+    #topbar + #header {
         box-shadow: rgba(0,0,0,0.18) 0 3px 15px;
     }
 
-    #options:hover + #header {
+    #topbar:hover + #header {
         box-shadow: none;
         opacity: 1 !important;
         transition: all .3s, opacity .2s !important;
     }
 
-    #options:hover {
+    #topbar:hover {
         opacity: 1;
         transition: all .3s, opacity .2s;
     }
 
-    #options * {
+    #topbar * {
         vertical-align: middle;
     }
 
-    #options .whole {
+    #topbar .whole {
         margin: 0;
         padding: 0;
         display: inline-block;
@@ -319,11 +320,11 @@ a {
         transition: all .3s;
     }
 
-        #options .whole:hover {
+        #topbar .whole:hover {
             background: var(--line);
         }
 
-    #options .group-title {
+    .group-title {
         font-size: 16px;
         font-weight: bold;
         line-height: 40px;
@@ -332,37 +333,56 @@ a {
         transition: background .3s;
     }
 
-    #options button,
-    #options #save_btn {
-        background: var(--background);
-        color: var(--active);
-        border-radius: 3px;
-        border: none;
-        box-shadow: rgba(0,0,0,0.18) 2px 0 7px;
-        text-align: center;
-        margin: 0 4px;
-        outline: none;
-        line-height: 20px;
-        cursor: pointer;
-        font-size: 13px;
-        transition: all .2s;
+#topbar button,
+#topbar #save_btn,
+#settings button {
+    background: var(--background);
+    color: var(--active);
+    border-radius: 3px;
+    border: none;
+    box-shadow: rgba(0,0,0,0.18) 2px 0 7px;
+    text-align: center;
+    margin: 0 4px;
+    outline: none;
+    line-height: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all .2s;
+}
+
+#topbar button,
+#topbar #save_btn,
+#settings button {
+    padding: 5px 13px;
+}
+
+    #topbar button:hover,
+    #topbar #save_btn:hover,
+    #settings button:hover,
+    #tool_bar button:hover{
+        transform: scale(1.1);
     }
 
-    #options button {
-        padding: 5px 15px;
+    #topbar button:active,
+    #topbar #save_btn:active,
+    #settings button:active,
+    #tool_bar button:active{
+        transform: scale(.9);
     }
 
-        #options button:hover,
-        #options #save_btn:hover {
-            transform: scale(1.1);
-        }
+#settings > div > div {
+    height: 40px;
+}
 
-        #options button:active,
-        #options #save_btn:active {
-            transform: scale(.9);
-        }
+    #settings > div > div * {
+        vertical-align: middle;
+    }
 
-    #options .save {
+#settings button {
+    float: right;
+}
+
+    #topbar .save {
         display: inline-block;
         float: right;
         margin-right: 1%;
@@ -371,7 +391,7 @@ a {
         white-space: nowrap;
     }
 
-    #options #save_info {
+    #topbar #save_info {
         display: inline-block;
         position: absolute;
         top: 2px;
@@ -381,7 +401,7 @@ a {
         vertical-align: middle;
     }
 
-    #options #save_btn {
+    #topbar #save_btn {
         position: absolute;
         top: 5px;
         right: 3px;
@@ -392,7 +412,7 @@ a {
         vertical-align: middle;
     }
 
-    #options .group {
+    #topbar .group {
         display: inline-block;
         overflow: hidden;
         white-space: nowrap;
@@ -403,8 +423,8 @@ a {
         vertical-align: middle;
     }
 
-        #options span:hover + .group,
-        #options .group:hover {
+        #topbar span:hover + .group,
+        #topbar .group:hover {
             width: auto;
             padding: 5px 10px;
             overflow: visible;
@@ -413,10 +433,11 @@ a {
 
 #stick {
     margin-left: 20px;
+    line-height:40px;
 }
 
 
-#sidebar {
+.sidebar {
     position: fixed;
     left: -28rem;
     top: 40px;
@@ -433,7 +454,7 @@ a {
     color: rgba(0,0,0,0);
 }
 
-    #sidebar:hover {
+    .sidebar:hover {
         color: var(--scroll);
     }
 
@@ -450,12 +471,12 @@ a {
     box-shadow: inset 0 0 0 10px !important;
 }
 
-#sidebar article {
-    color: #888;
+.sidebar > * {
+    color: var(--active);
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: var(--main);
+    color: var(--main) !important;
     text-shadow: var(--shadow) 0 1px 5px;
     font-weight: bold;
     transition: all .3s;
@@ -535,7 +556,7 @@ blockquote p {
         position: absolute;
         top: 2rem;
         left: 2rem;
-        color: var(--active);
+        color: var(--active) !important;
         transition: color .3s;
         user-select: none;
     }
@@ -628,6 +649,7 @@ blockquote p {
     padding: 0;
     margin: 0;
     user-select: none;
+    color:#888;
 }
 
     #content > ul > li {
@@ -654,9 +676,12 @@ blockquote p {
             transition: color .2s;
             display: inline-block;
             height: 100%;
-            width: 28rem;
-            transform: translateX(-2rem);
+            width: 30rem;
+            margin-left: -2rem;
             transition: all .3s;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         #content > ul > li:hover {
@@ -668,11 +693,16 @@ blockquote p {
             }
 
             #content > ul > li:hover a {
-                transform: none;
+                margin-left: 0;
+                width:28rem;
             }
 
         #content > ul > li:active {
             background: var(--line);
+        }
+
+        #content > ul > li * {
+            vertical-align: middle;
         }
 
 #content ul #new,
@@ -799,10 +829,7 @@ code {
 }
 
 #Rmenu {
-    position: absolute;
-    top: 100px;
-    left: 100px;
-    width: 200px;
+    position: fixed;
     background: var(--background);
     animation: fade .15s;
     box-shadow: rgba(0,0,0,.2) 0 5px 15px;
@@ -813,6 +840,7 @@ code {
     z-index: 9999;
     user-select: none;
     font-size: 15px;
+    width: 200px;
 }
 
     #Rmenu ul {
@@ -926,3 +954,83 @@ code, code * {
 .str, .atv {
     color: #d68f29;
 }
+
+
+button.on, button.off {
+    transform: none !important;
+    height: 12px;
+    width: 30px;
+    border-radius: 12px !important;
+    position: relative;
+    margin-top: 6px !important;
+    margin-right: 9px !important;
+}
+
+    button.off{
+        background:var(--line);
+    }
+
+    button.on:before, button.off:before {
+        position: absolute;
+        content: '';
+        height: 20px;
+        width: 20px;
+        border-radius: 100%;
+        top: -4px;
+        box-shadow: #0003 0 5px 10px;
+        transition: all .3s;
+    }
+
+        button.on:hover, button.off:hover {
+            filter: brightness(1.1);
+        }
+        button.on:active, button.off:active {
+            filter: brightness(.8);
+            transition:all .1s;
+        }
+
+button.off {
+    filter: brightness(.95);
+}
+
+        button.on:before {
+            left: 16px;
+            background: var(--main);
+        }
+
+        button.off:before {
+            left: -4px;
+            background:#888;
+        }
+
+#tool_bar {
+    background: var(--darkback);
+    height: 40px;
+    padding: .1rem;
+    position: absolute;
+    top: 15px;
+    right: 2%;
+    z-index: 999;
+    display: none;
+    box-shadow: var(--shadow) 0 3px 15px;
+    border-radius:3px;
+    animation: fadeInRight .5s cubic-bezier(0, 0.6, 0.06, 0.99);
+}
+
+    #tool_bar button {
+        background: var(--background);
+        color: var(--active);
+        border-radius: 3px;
+        border: none;
+        box-shadow: rgba(0,0,0,0.18) 2px 0 10px;
+        padding: .2rem;
+        text-align: center;
+        margin: 5px;
+        outline: none;
+        line-height: 20px;
+        cursor: pointer;
+        user-select: none;
+        transition: all .2s;
+        width: 30px;
+        line-height: 24px;
+    }

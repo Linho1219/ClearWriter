@@ -117,6 +117,7 @@
             if (state.annotate) { state.annotate.clear(); state.annotate = null; }
             state.annotate = cm.showMatchesOnScrollbar(state.query, queryCaseInsensitive(state.query));
         }
+        showToolBar();
     }
 
     function doSearch(cm, rev, persistent, immediate) {
@@ -159,6 +160,7 @@
                 startSearch(cm, state, q);
                 findNext(cm, rev);
             }
+            
         } else {
             dialog(cm, getQueryDialog(cm), "Search for:", q, function (query) {
                 if (query && !state.query) cm.operation(function () {
@@ -167,7 +169,7 @@
                     findNext(cm, rev);
                 });
             });
-        }
+        } hideToolBar();
     }
 
     function findNext(cm, rev, callback) {
