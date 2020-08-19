@@ -2239,7 +2239,7 @@ $(document).bind("mouseover mouseout mousedown", function (event) {
     }
 
     if (title != "" && title != null && title != "null") {
-      ele.removeAttribute("title");
+      ele.title = "";
       var showEle = $("<div></div>", {
         class: "showTitleBox",
       })
