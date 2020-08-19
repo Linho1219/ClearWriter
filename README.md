@@ -30,6 +30,19 @@ Mac上的 iA Writer 固然能很好地做到这一点，但作为一个初二学
 - 基于 Github Gist 的云同步功能；
 - 可让你立即进入状态的”闪念“功能。
 
+## 屏幕截图
+
+![](https://github.com/Henrylin666/ClearWriter/raw/master/screenshots/1.png)
+![](https://github.com/Henrylin666/ClearWriter/raw/master/screenshots/2.png)
+![](https://github.com/Henrylin666/ClearWriter/raw/master/screenshots/3.png)
+![](https://github.com/Henrylin666/ClearWriter/raw/master/screenshots/4.png)
+![](https://github.com/Henrylin666/ClearWriter/raw/master/screenshots/5.png)
+![](https://github.com/Henrylin666/ClearWriter/raw/master/screenshots/6.png)
+![](https://github.com/Henrylin666/ClearWriter/raw/master/screenshots/7.png)
+![](https://github.com/Henrylin666/ClearWriter/raw/master/screenshots/8.png)
+![](https://github.com/Henrylin666/ClearWriter/raw/master/screenshots/9.png)
+
+
 ## 使用技巧
 
 - 点击顶栏上的全屏按钮或按下 `F11`（或 `Fn + F11`）切入全屏，安心写作；
