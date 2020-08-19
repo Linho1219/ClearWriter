@@ -1,71 +1,81 @@
 .CodeMirror-dialog {
-    position: absolute;
-    right: 2%;
-    margin-top: 15px;
-    background: var(--darkback);
-    border-radius: 3px;
-    z-index: 15;
-    padding: .1em .8em;
-    overflow: hidden;
-    color: inherit;
-    box-shadow: var(--shadow) 0 3px 15px;
-    color: #999;
-    transition: all .3s;
-    animation: fadeInRight .5s cubic-bezier(0, 0.6, 0.06, 0.99);
+  position: absolute;
+  right: 2%;
+  margin-top: 15px;
+  background: var(--darkback);
+  border-radius: 3px;
+  z-index: 15;
+  padding: 0.1em 0.8em;
+  overflow: hidden;
+  color: inherit;
+  box-shadow: var(--shadow) 0 3px 15px;
+  color: #999;
+  transition: all 0.3s;
+  animation: fadeInRight 0.5s cubic-bezier(0, 0.6, 0.06, 0.99);
+  cursor: default;
 }
 
-    .CodeMirror-dialog-top {
-        top: 0;
-    }
+.CodeMirror-dialog-top {
+  top: 0;
+}
 
 .CodeMirror-dialog-bottom {
-    bottom: 0;
+  bottom: 0;
 }
 
 .CodeMirror-dialog input {
-    border: none;
-    outline: none;
-    background: transparent;
-    width: 20em;
-    color: var(--active);
-    transition: color .3s;
-    font-size: 18px;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 20em;
+  color: var(--active);
+  transition: color 0.3s;
+  font-size: 18px;
 }
 
-.CodeMirror-dialog *{
-    vertical-align:middle;
+.CodeMirror-dialog * {
+  vertical-align: middle;
 }
 
 .CodeMirror-dialog button {
-    font-size: 70%;
-    background: var(--background);
-    color: var(--active);
-    border-radius: 3px;
-    border: none;
-    box-shadow: rgba(0,0,0,0.18) 2px 0 10px;
-    padding: 5px 10px;
-    text-align: center;
-    margin: 5px .5% 5px .5%;
-    outline: none;
-    line-height: 20px;
-    cursor: pointer;
-    transition: all .2s;
+  background: var(--background);
+  color: var(--active);
+  border-radius: 3px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.18) 2px 0 10px;
+  padding: 0.2rem;
+  text-align: center;
+  margin: 5px;
+  outline: none;
+  line-height: 20px;
+  user-select: none;
+  transition: all 0.2s;
+  width: 30px;
+  line-height: 24px;
+  font-size: 15px;
 }
 
-    .CodeMirror-dialog button:hover {
-        transform: scale(1.07);
-    }
+.CodeMirror-dialog button:hover {
+  box-shadow: rgba(0, 0, 0, 0.18) 2px 5px 13px;
+  filter: brightness(var(--lighter));
+}
 
-    .CodeMirror-dialog button:active {
-        transform: scale(.9);
-    }
+.CodeMirror-dialog button:active {
+  filter: brightness(var(--darker));
+  transition: all 0.1s;
+  box-shadow: #0000 0 0 0, #0003 0 5px 15px inset;
+}
 
 .CodeMirror-search-hint {
-    font-size: 14px;
-    display:inline-block;
-    line-height:20px;
+  font-size: 14px;
+  display: inline-block;
+  line-height: 20px;
+}
+
+.CodeMirror-confirm {
+  animation: none;
 }
 
 *::selection {
-    background-color: var(--selection) !important;
+  background-color: var(--selection) !important;
 }

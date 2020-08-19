@@ -1,15 +1,31 @@
 {
-  "author": "Lin Hongping",
+  "author": "linhongping <linhongping1219@163.com>",
+  "bugs": {
+    "url": "https://support.qq.com/products/174144"
+  },
   "dependencies": {
-    "electron-store": "^5.2.0",
+    "@octokit/core": "^3.1.2",
+    "bindings": "^1.5.0",
+    "electron-acrylic-window": "^0.2.2",
+    "electron-store": "^6.0.0",
     "eve": "^0.5.4",
-    "ewc": "0.0.1"
+    "glasstron": "0.0.3",
+    "iconv-lite": "^0.6.2",
+    "node-addon-api": "^3.0.0",
+    "node-gyp": "^7.0.0"
   },
   "description": "A simple, beautiful and powerful Markdown notepad.",
   "devDependencies": {
-    "electron": "^8.2.0",
-    "electron-packager": "^14.2.1"
+    "electron": "^8.4.0",
+    "electron-packager": "^15.0.0"
   },
+  "keywords": [
+    "electron",
+    "markdown",
+    "markdown-editor",
+    "fluent-design",
+    "acylic"
+  ],
   "license": "GPL-3.0",
   "main": "main.js",
   "name": "clear_writer",
@@ -21,5 +37,5 @@
     "build": "electron-packager ./ --win --out ./OutApp --arch=x64 --asar --icon=icon.ico",
     "start": "electron ."
   },
-  "version": "1.8.0"
+  "version": "2.0.0"
 }

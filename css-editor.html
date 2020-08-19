@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom CSS</title>
+    <script>
+      var WRITER = false;
+    </script>
+    <script src="./files/codemirror.js"></script>
+    <script src="./files/overlay.js"></script>
+    <script src="./files/search/search.js"></script>
+    <script src="./files/fold/brace-fold.js"></script>
+    <script src="./files/fold/comment-fold.js"></script>
+    <script src="./files/fold/foldcode.js"></script>
+    <script src="./files/fold/foldgutter.js"></script>
+    <script src="./files/fold/indent-fold.js"></script>
+
+    <script src="./files/active-line.js"></script>
+    <script src="./files/search/jump-to-line.js"></script>
+    <script src="./files/hightlighting/css.js"></script>
+    <script src="./files/matchbrackets.js"></script>
+    <script src="./files/closebrackets.js"></script>
+
+    <link rel="stylesheet" href="./files/codemirror.css" />
+    <link rel="stylesheet" href="./files/search/matchesonscrollbar.css" />
+    <link rel="stylesheet" href="./files/dialog/dialog.css" />
+    <link rel="stylesheet" href="./files/fold/foldgutter.css" />
+    <link rel="stylesheet" href="./files/css-editor.css" />
+  </head>
+  <body>
+    <div id="close"></div>
+    <div class="loading">
+      <i>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </i>
+    </div>
+    <div class="main" style="opacity: 0;">
+      <textarea id="css_code">
+/*
+你可以在这里追加 Clear Writer 的 CSS 样式。你所做的一切更改都会被自动保存并即时反映到 Clear Writer的主窗口上。“设置”中“高级选项”下的开发人员工具选项可能会帮到你。
+
+你可以在這裡追加 Clear Writer 的 CSS 樣式。你所做的一切更改都會被自動保存並即時反映到 Clear Writer 的主視窗上。“設定” 中 “高級選項” 下的開發人員工具選項可能會幫到你。
+
+You can add CSS code to Clear Writer here. Any changes you make will be automatically saved and immediately apply to the main window of Clear Writer. The dev tools option under "advanced" group in settings may help you.
+*/</textarea
+      >
+    </div>
+  </body>
+  <script src="./files/css-editor.js"></script>
+</html>

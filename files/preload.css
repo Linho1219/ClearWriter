@@ -1,96 +1,98 @@
 ﻿@keyframes loader {
-    from {
-        left: -10%;
-    }
+  from {
+    left: -10%;
+  }
 
-    to {
-        left: 110%;
-    }
+  to {
+    left: 110%;
+  }
 }
 
 @keyframes fadeInLeftSp {
-    from {
-        opacity: 0;
-        transform: translate(-70%,-50%);
-    }
+  from {
+    opacity: 0;
+    transform: translate(-70%, -50%);
+  }
 }
 
 #preload {
-    z-index: 1000;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background:var(--background);
-    top:0;
-    left:0;
-    transition: opacity .3s;
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s;
 }
 
-    #preload img{
-        position:fixed;
-        left:50%;
-        top:43%;
-        transform:translate(-50%,-50%);
-        animation:fadeInLeftSp .8s;
-    }
-
-    span[class*="l-"] {
-        display: block;
-        bottom: 45%;
-        height: 8px;
-        width: 8px;
-        position: fixed;
-        background: var(--main);
-        z-index: 1001;
-        display: inline-block;
-        margin: 0 2px;
-        border-radius: 100%;
-        -webkit-border-radius: 100%;
-        -moz-border-radius: 100%;
-        -webkit-animation: loader 2s infinite;
-        -webkit-animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
-        -webkit-animation-fill-mode: both;
-        -moz-animation: loader 3s infinite;
-        -moz-animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
-        -moz-animation-fill-mode: both;
-        animation: loader 2.5s infinite;
-        animation-timing-function: cubic-bezier(0.030, 0.615, 0.995, 0.415);
-        animation-fill-mode: both;
-        transform: translate(-50%,-50%);
-    }
-
-span.l-1 {
-    -webkit-animation-delay: 0.5s;
-    animation-delay: 0.5s;
-    -moz-animation-delay: 0.5s;
+#preload img {
+  position: absolute;
+  left: 50%;
+  top: 43%;
+  transform: translate(-50%, -50%);
+  animation: fadeInLeftSp 0.8s;
+  background-color: var(--main);
+  width: 500px;
 }
 
-span.l-2 {
-    -webkit-animation-delay: 0.4s;
-    animation-delay: 0.4s;
-    -moz-animation-delay: 0.4s;
+#preload span {
+  display: block;
+  bottom: 45%;
+  height: 8px;
+  width: 8px;
+  position: fixed;
+  background: var(--main);
+  z-index: 1001;
+  display: inline-block;
+  margin: 0 2px;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -webkit-animation: loader 2s infinite;
+  -webkit-animation-timing-function: cubic-bezier(0.03, 0.615, 0.995, 0.415);
+  -webkit-animation-fill-mode: both;
+  -moz-animation: loader 3s infinite;
+  -moz-animation-timing-function: cubic-bezier(0.03, 0.615, 0.995, 0.415);
+  -moz-animation-fill-mode: both;
+  animation: loader 2.5s infinite;
+  animation-timing-function: cubic-bezier(0.03, 0.615, 0.995, 0.415);
+  animation-fill-mode: both;
+  transform: translate(-50%, -50%);
 }
 
-span.l-3 {
-    -webkit-animation-delay: 0.3s;
-    animation-delay: 0.3s;
-    -moz-animation-delay: 0.3s;
+#preload span:nth-child(1) {
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
 }
 
-span.l-4 {
-    -webkit-animation-delay: 0.2s;
-    animation-delay: 0.2s;
-    -moz-animation-delay: 0.2s;
+#preload span:nth-child(2) {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
 }
 
-span.l-5 {
-    -webkit-animation-delay: 0.1s;
-    animation-delay: 0.1s;
-    -moz-animation-delay: 0.1s;
+#preload span:nth-child(3) {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
 }
 
-span.l-6 {
-    -webkit-animation-delay: 0;
-    animation-delay: 0;
-    -moz-animation-delay: 0;
+#preload span:nth-child(4) {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+}
+
+#preload span:nth-child(5) {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+  -moz-animation-delay: 0.1s;
+}
+
+#preload span:nth-child(6) {
+  -webkit-animation-delay: 0;
+  animation-delay: 0;
+  -moz-animation-delay: 0;
 }

@@ -3653,7 +3653,7 @@
                 text = text.replace(/^\s*\[\s\]\s*/, "<input type=\"checkbox\" class=\"task-list-item-checkbox\" /> ")
                            .replace(/^\s*\[x\]\s*/,  "<input type=\"checkbox\" class=\"task-list-item-checkbox\" checked disabled /> ");
 
-                return "<li style=\"list-style: none;\">" + this.atLink(this.emoji(text)) + "</li>";
+                return "<li style=\"list-style: none;\" class=\"task-list-li\">" + this.atLink(this.emoji(text)) + "</li>";
             }
             else 
             {
