@@ -1,0 +1,47 @@
+.CodeMirror-hints {
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  list-style: none;
+
+  margin: 0;
+  padding: 5px;
+
+  box-shadow: #0008 0 10px 30px;
+  border-radius: 5px;
+
+  background: #29292a50;
+  backdrop-filter: blur(15px);
+
+  font-family: monospace;
+
+  max-height: 20em;
+  overflow-y: auto;
+}
+
+.CodeMirror-hint {
+  margin: 0;
+  padding: 0 10px;
+  border-radius: 3px;
+  white-space: pre;
+  color: #eee;
+  transition: all 0.2s;
+  font-size: 16px;
+}
+
+.CodeMirror-hint:hover {
+  background: #0078d750;
+}
+.CodeMirror-hint:active {
+  opacity: 0.6;
+  transition: all 0.1s;
+}
+
+li.CodeMirror-hint-active {
+  background: #0078d7;
+  color: white;
+}
+
+li.CodeMirror-hint-active:hover {
+  background: #1c99ff;
+}

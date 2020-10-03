@@ -84,7 +84,7 @@
 .CodeMirror-activeline-gutter {
   border-right: var(--main) solid 2px;
   background: var(--com);
-  transform: translateX(-2.4px);
+  transform: translateX(-2px);
   animation: active-gutter 0.3s;
 }
 

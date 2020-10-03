@@ -85,7 +85,7 @@
   outline: none;
 }
 
-*::selection {
+::selection {
   background-color: var(--selection) !important;
 }
 
@@ -104,6 +104,7 @@ html,
 
 .CodeMirror-scroll {
   transition: color 0.3s;
+  text-align: justify;
 }
 
 .sidebar {
@@ -121,9 +122,12 @@ html {
 }
 
 body {
-  height: calc(80vh - 10px);
-  margin: calc(10vh + 20px) 5% 0 5%;
-  position: relative;
+  position: fixed;
+  top: calc(10vh + 40px);
+  bottom: 10vh;
+  left: 6vw;
+  right: 6vw;
+  margin: 0;
 }
 
 #ctn,
@@ -754,7 +758,6 @@ ol.linenums li:before {
 .markdown-body h4:before,
 .markdown-body h5:before,
 .markdown-body h6:before {
-  content: "H1";
   position: absolute;
   left: -25px;
   font-size: 14px;
@@ -1364,19 +1367,49 @@ button.off:before {
 }
 
 #settings input[type="range"]:disabled {
-  box-shadow: none;
   filter: brightness(0.8) !important;
   cursor: no-drop;
 }
 
 #settings input[type="range"]:disabled + label {
   opacity: 0.5;
+  box-shadow: none;
   cursor: no-drop;
 }
 
 #settings input[type="range"]:disabled::-webkit-slider-thumb {
   box-shadow: none;
   filter: none !important;
+}
+
+#settings input[type="range"] + label {
+  background: var(--background);
+  width: 50px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: #0003 0 0px 10px;
+  transition: all 0.2s;
+  margin-left: 6px;
+  position: relative;
+  font-size: 15px;
+  display: inline-block;
+}
+
+#settings input[type="range"] + label:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 8px transparent solid;
+  border-right: 8px var(--background) solid;
+  top: 6px;
+  left: -15px;
+}
+
+#settings input[type="range"]:hover + label,
+#settings input[type="range"] + label:hover {
+  box-shadow: #0003 0 5px 15px;
 }
 
 #tool_bar {
@@ -1436,7 +1469,27 @@ button.off:before {
 }
 
 #sync_dashboard {
-  background: var(--background);
+  background-image: url("./Github.svg");
+}
+#gitee_sync_dashboard {
+  background-image: url("./Gitee.svg");
+}
+#sync_dashboard,
+#gitee_sync_dashboard {
+  background-repeat: no-repeat;
+  background-size: 55px;
+  background-position: 95% 10px;
+}
+
+#sync_dashboard.connected,
+#gitee_sync_dashboard.connected {
+  background-size: 70px;
+  background-position: 95% 45px;
+}
+
+#sync_dashboard,
+#gitee_sync_dashboard {
+  background-color: var(--background);
   padding: 15px;
   border-radius: 5px;
   box-shadow: var(--shadow) 0 5px 15px;
@@ -1444,63 +1497,76 @@ button.off:before {
   transition: all 0.3s;
 }
 
-#sync_dashboard.connected {
+#sync_dashboard.connected,
+#gitee_sync_dashboard.connected {
   height: 96px;
 }
 
-#sync_dashboard.unconnected {
+#sync_dashboard.unconnected,
+#gitee_sync_dashboard.unconnected {
   height: 30px;
 }
 
-#sync_dashboard button {
+#sync_dashboard button,
+#gitee_sync_dashboard button {
   float: none;
 }
 
-#sync_dashboard > * {
+#sync_dashboard > *,
+#gitee_sync_dashboard > * {
   display: none;
   animation: fade 0.3s;
 }
 
 #sync_dashboard.unconnected #sync_start_btn,
-#sync_dashboard.connected #sync {
+#gitee_sync_dashboard.unconnected #gitee_sync_start_btn,
+#sync_dashboard.connected #sync,
+#gitee_sync_dashboard.connected #gitee_sync {
   display: block;
 }
 
-img#avartar {
+img#avatar,
+img#gitee_avatar {
   width: 40px;
   margin-right: 10px;
   border-radius: 50%;
   box-shadow: #0003 0 5px 15px;
 }
 
-span#username_span {
+span#username_span,
+span#gitee_username_span {
   font-weight: bold;
   font-size: 18px;
   transition: none;
 }
 
-#sync > div {
+#sync > div,
+#gitee_sync > div {
   margin: 0 5px 15px 5px;
 }
 
-div#sync {
+#sync,
+#gitee_sync {
   line-height: 40px;
 }
-#settings div i#sign_out_btn {
+#settings i#sign_out_btn,
+#settings i#gitee_sign_out_btn {
   color: #888;
   float: right;
   margin: 0;
   font-size: 16px;
   transition: all 0.2s;
 }
-#settings div i#sign_out_btn:hover {
+#settings div i#sign_out_btn:hover,
+#settings div i#gitee_sign_out_btn:hover {
   color: #aaa;
 }
-#settings div i#sign_out_btn:hover:active {
+#settings div i#sign_out_btn:hover:active,
+#settings div i#gitee_sign_out_btn:active {
   color: #555;
 }
 
-#backup_and_sync + div > button {
+#backup_and_sync ~ div > button {
   float: none;
 }
 
@@ -1509,26 +1575,32 @@ div#sync {
   margin-left: 20px;
 }
 
-#import_list {
+#import_list,
+#import_list * {
   color: var(--active);
 }
 
 @keyframes titlebox {
   0%,
-  85% {
+  69% {
     opacity: 0;
+    transform: translateY(900px);
+  }
+
+  70% {
+    opacity: 0;
+    transform: none;
   }
 }
 
 .showTitleBox {
-  animation: titlebox 1.8s;
+  animation: titlebox 1s;
   transition: opacity 0.2s;
   z-index: 9999;
   background: var(--background);
   color: var(--active);
   padding: 10px 15px;
   box-shadow: #0004 0 3px 15px;
-  transform: translate(0px, 40px);
   border-radius: 3px;
   font-size: 14px;
   line-height: 20px;
@@ -1606,6 +1678,41 @@ button#update {
 
 #import_list {
   color: var(--active);
+}
+
+#current_vertion {
+  font-size: 15px;
+  display: block;
+  margin: 5px 0;
+  text-shadow: #0005 0 3px 8px;
+}
+
+#current_vertion + div button {
+  margin-left: 0;
+}
+
+#update.new_ver {
+  position: relative;
+}
+
+#update.new_ver:after {
+  content: "";
+  position: absolute;
+  background: #e00;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  top: -3px;
+  right: -3px;
+  box-shadow: #0003 0 2px 5px;
+}
+
+kbd {
+  background: var(--background);
+  padding: 2px 8px;
+  border-radius: 3px;
+  border: var(--shadow) solid 1px;
+  box-shadow: #0002 0 3px 10px;
 }
 
 @media screen and (max-height: 640px) {

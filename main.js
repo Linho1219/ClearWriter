@@ -5,7 +5,7 @@ const { app, BrowserWindow } = require("electron");
 const electron = require("electron");
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-var win;
+let win;
 
 const ipc = electron.ipcMain;
 
@@ -22,19 +22,33 @@ if (!gotTheLock) {
     if (win) {
       if (win.isMinimized()) win.restore();
       win.focus();
-      var path = commandLine[commandLine.length - 1];
+      path = commandLine[commandLine.length - 1];
       win.webContents.send("openFile", path);
     }
   });
 
 ipc.on("toogle-acrylic", function () {
-  store.set("acrylic", store.get("acrylic") == "1" ? "0" : "1");
-  app.exit();
-  app.relaunch();
+  // store.set("acrylic", store.get("acrylic") == "1" ? "0" : "1");
+  // app.exit();
+  // app.relaunch();
+  if (store.get("acrylic") == 0)
+    glasstron.update(win, {
+      windows: { blurType: null },
+      macos: { vibrancy: null },
+      linux: { requestBlur: false }, // KWin
+    });
+  else
+    glasstron.update(win, {
+      windows: { blurType: "acrylic" },
+      //                   ^~~~~~~
+      // Windows 10 1803+; for older versions you might want to use 'blurbehind'
+      macos: { vibrancy: "fullscreen-ui" },
+      linux: { requestBlur: true }, // KWin
+    });
 });
 
 if (!store.get("acrylic")) {
-  store.set("acrylic", "0");
+  store.set("acrylic", 0);
 }
 
 const Menu = electron.Menu;
@@ -75,7 +89,7 @@ function createWindow() {
     win.show();
   });
 
-  if (store.get("acrylic") == "1") {
+  if (store.get("acrylic") == 1) {
     glasstron.update(win, {
       windows: { blurType: "acrylic" },
       //                   ^~~~~~~

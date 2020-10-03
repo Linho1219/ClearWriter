@@ -7,18 +7,30 @@ var editor = CodeMirror.fromTextArea(document.getElementById("css_code"), {
   cursorBlinkRate: 800,
   styleActiveLine: true,
   foldGutter: true,
-  gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+  gutters: [
+    "CodeMirror-lint-markers",
+    "CodeMirror-linenumbers",
+    "CodeMirror-foldgutter",
+  ],
   spellcheck: true,
   autoCloseBrackets: true,
   mode: "css",
   matchBrackets: true,
   showCursorWhenSelecting: true,
+  colorpicker: {
+    mode: "edit",
+  },
+  lint: true,
 });
 
-if (localStorage.css) editor.setValue(localStorage.css);
+if (localStorage.css) {
+  editor.setValue(localStorage.css);
+  document.getElementById("ctrl").innerHTML = localStorage.css;
+}
 
 editor.on("change", () => {
   localStorage.setItem("css", editor.getValue());
+  document.getElementById("ctrl").innerHTML = editor.getValue();
 });
 
 window.onload = () => {
@@ -33,8 +45,13 @@ window.onload = () => {
   }, 500);
 };
 
+document.body.onkeydown = (e) => {
+  if (e.keyCode >= 65 && e.keyCode <= 90 && !e.ctrlKey)
+    editor.showHint({ completeSingle: false });
+};
+
 document.getElementById("close").onclick = () => {
-  var { remote } = require("electron");
-  var CURRENT_WINDOW = remote.getCurrentWindow();
+  const { remote } = require("electron");
+  CURRENT_WINDOW = remote.getCurrentWindow();
   CURRENT_WINDOW.close();
 };

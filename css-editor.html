@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Custom CSS</title>
     <script>
-      var WRITER = false;
+      WRITER = false;
     </script>
     <script src="./files/codemirror.js"></script>
+    <script src="./files/colorpicker/codemirror-colorpicker.js"></script>
     <script src="./files/overlay.js"></script>
-    <script src="./files/search/search.js"></script>
     <script src="./files/fold/brace-fold.js"></script>
     <script src="./files/fold/comment-fold.js"></script>
     <script src="./files/fold/foldcode.js"></script>
@@ -21,12 +21,25 @@
     <script src="./files/hightlighting/css.js"></script>
     <script src="./files/matchbrackets.js"></script>
     <script src="./files/closebrackets.js"></script>
+    <script src="./files/hint/show-hint.js"></script>
+    <script src="./files/hint/css-hint.js"></script>
+    <script src="./files/lint/csslint.js"></script>
+    <script src="./files/lint/lint.js"></script>
+    <script src="./files/lint/css-lint.js"></script>
 
     <link rel="stylesheet" href="./files/codemirror.css" />
     <link rel="stylesheet" href="./files/search/matchesonscrollbar.css" />
     <link rel="stylesheet" href="./files/dialog/dialog.css" />
     <link rel="stylesheet" href="./files/fold/foldgutter.css" />
+
+    <link rel="stylesheet" href="./files/hint/show-hint.css" />
+    <link rel="stylesheet" href="./files/lint/lint.css" />
     <link rel="stylesheet" href="./files/css-editor.css" />
+    <link
+      rel="stylesheet"
+      href="./files/colorpicker/codemirror-colorpicker.css"
+    />
+    <style id="ctrl"></style>
   </head>
   <body>
     <div id="close"></div>
@@ -40,7 +53,7 @@
         <span></span>
       </i>
     </div>
-    <div class="main" style="opacity: 0;">
+    <div class="main" style="opacity: 0">
       <textarea id="css_code">
 /*
 你可以在这里追加 Clear Writer 的 CSS 样式。你所做的一切更改都会被自动保存并即时反映到 Clear Writer的主窗口上。“设置”中“高级选项”下的开发人员工具选项可能会帮到你。

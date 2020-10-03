@@ -20,6 +20,8 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
     <script src="./files/jquery.fullscreen.js"></script>
     <script src="./files/FileSaver.js"></script>
     <script src="./files/jquery.wordexport.js"></script>
+    <script src="./files/i18n.js"></script>
+
 
     <link rel="stylesheet" href="./files/codemirror.css" />
     <link rel="stylesheet" href="./files/writer.css" />
@@ -69,6 +71,7 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
     <script src="./files/editor.md/underscore.min.js"></script>
 
     <script src="./files/language.js"></script>
+    <script src="./files/github.js"></script>
     <script src="./files/jschardet.min.js"></script>
 
     <style id="control"></style>
@@ -81,7 +84,7 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
     <style id="header-control"></style>
     <style id="focus-control"></style>
     <style id="advanced_control"></style>
-
+    <style id="linenum_control"></style>
     <style id="window-background">
       html {
         background: rgba(248, 248, 248, 255);
@@ -91,7 +94,7 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
   </head>
   <body onunload="save_content()" id="board">
     <input
-      style="opacity: 0; position: fixed; left: 3000px;"
+      style="opacity: 0; position: fixed; left: 3000px"
       type="color"
       value="#00BAFF"
       id="real_main_color"
@@ -189,7 +192,7 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
           <i class="fad fa-calculator"></i>
         </button>
       </div>
-      <span onclick="set_stick()" id="stick" style="cursor: pointer;">📌</span>
+      <span onclick="set_stick()" id="stick" style="cursor: pointer">📌</span>
       <div class="save">
         <a id="save_info"></a>
         <a id="save_btn" onclick="down_cur()">另存为...</a>
@@ -259,21 +262,45 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
           </button>
         </div>
         <div id="sync_dashboard" class="unconnected">
-          <button onclick="syncStart()" id="sync_start_btn">登录Github</button>
+          <button onclick="github.syncStart()" id="sync_start_btn">
+            登录 Github
+          </button>
           <div id="sync">
             <div>
-              <img draggable="false" src="" id="avartar" />
+              <img draggable="false" src="" id="avatar" />
               <span id="username_span"></span>
               <i
                 class="fad fa-sign-out-alt"
-                onclick="signOut()"
+                onclick="github.signOut()"
                 id="sign_out_btn"
               ></i>
             </div>
-            <button id="sync_upload" onclick="exportDataGist()">
+            <button id="sync_upload" onclick="github.exportDataGist()">
               备份数据到云端
             </button>
-            <button id="sync_download" onclick="importDataGist()">
+            <button id="sync_download" onclick="github.importDataGist()">
+              恢复数据到本地
+            </button>
+          </div>
+        </div>
+        <div id="gitee_sync_dashboard" class="unconnected">
+          <button onclick="gitee.syncStart()" id="gitee_sync_start_btn">
+            登录 Gitee
+          </button>
+          <div id="gitee_sync">
+            <div>
+              <img draggable="false" src="" id="gitee_avatar" />
+              <span id="gitee_username_span"></span>
+              <i
+                class="fad fa-sign-out-alt"
+                onclick="gitee.signOut()"
+                id="gitee_sign_out_btn"
+              ></i>
+            </div>
+            <button id="gitee_sync_upload" onclick="gitee.exportDataGist()">
+              备份数据到云端
+            </button>
+            <button id="gitee_sync_download" onclick="gitee.importDataGist()">
               恢复数据到本地
             </button>
           </div>
@@ -325,7 +352,7 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
     </div>
     <div id="ctn">
       <form method="post" target="_blank" id="save_form">
-        <textarea id="code" name="code" style="display: none;"></textarea>
+        <textarea id="code" name="code" style="display: none"></textarea>
       </form>
     </div>
 
@@ -346,7 +373,7 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
           ><span>Ctrl + X</span>
         </li>
 
-        <hr color="#888" style="opacity: 0.3;" size="1" />
+        <hr color="#888" style="opacity: 0.3" size="1" />
 
         <li onclick="editor.focus(); editor.execCommand('selectAll');">
           <i class="fad fa-i-cursor" aria-hidden="true"></i
@@ -357,7 +384,7 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
           ><span>Ctrl + Q</span>
         </li>
 
-        <hr color="#888" style="opacity: 0.3;" size="1" />
+        <hr color="#888" style="opacity: 0.3" size="1" />
 
         <li
           onclick="editor.focus(); editor.replaceSelection('**'+editor.getSelection()+'**');"
@@ -384,7 +411,7 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
           ><a id="hyperlink">超链接</a><span>Ctrl + K</span>
         </li>
 
-        <hr color="#888" style="opacity: 0.3;" size="1" />
+        <hr color="#888" style="opacity: 0.3" size="1" />
 
         <li onclick="editor.focus(); editor.execCommand('undo');">
           <i class="fad fa-undo" aria-hidden="true"></i><a id="undo">撤销</a
@@ -396,7 +423,8 @@ oooo     oooo oooooooooo  ooooo ooooooooooo ooooooooooo oooooooooo
         </li>
       </ul>
     </div>
-    <div id="calculate" style="display: none;"></div>
+    <div id="calculate" style="display: none"></div>
+    <div id="live_preview_box" style="display: none"></div>
     <div id="font-manager">
       <div class="bold"><span>a</span><a>啊a</a></div>
       <span>a</span><a>啊a</a>

@@ -6,6 +6,25 @@ body {
   padding: 0;
 }
 
+*::selection {
+  background: #569cd6 !important;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    box-shadow: none;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
 @font-face {
   font-family: BASE;
   src: url("ClearSans-Bold.woff2");
@@ -46,7 +65,7 @@ html {
 
 :root,
 .CodeMirror {
-  background: #2a2a2e;
+  background: #252526;
 }
 
 @keyframes fadeInUp {
@@ -187,8 +206,9 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #fff3;
+  background-color: #ffffff33;
   border-radius: 0;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -201,13 +221,13 @@ html {
 
 #close {
   background: #e000;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+  width: 45px;
+  height: 30px;
+  /* border-radius: 50%; */
   position: fixed;
-  top: 10px;
-  right: 10px;
-  box-shadow: #0005 0 5px 15px;
+  top: 0;
+  right: 0;
+  /* box-shadow: #0005 0 5px 15px; */
   opacity: 0.7;
   transition: opacity 0.2s, background 0.2s;
 }
@@ -229,8 +249,8 @@ html {
   position: absolute;
   width: 1.5px;
   height: 13px;
-  top: 3.5px;
-  left: 9px;
+  top: 8.5px;
+  left: 22px;
 }
 
 #close:before {
@@ -256,19 +276,19 @@ html {
 }
 
 div.CodeMirror-selected {
-  background: #353b48 !important;
+  background: #264f78 !important;
 }
 
 .CodeMirror-line > span > span::selection,
 .CodeMirror-line > span::selection,
 .CodeMirror-line::selection {
-  background: #353b48;
+  background: #264f78;
 }
 
 .CodeMirror-line > span > span::-moz-selection,
 .CodeMirror-line > span::-moz-selection,
 .CodeMirror-line::-moz-selection {
-  background: #353b48;
+  background: #264f78;
 }
 
 .CodeMirror-gutters {
@@ -288,6 +308,10 @@ div.CodeMirror-selected {
 .CodeMirror-guttermarker,
 .CodeMirror-guttermarker-subtle {
   color: #555 !important;
+}
+
+.CodeMirror-activeline-gutter .CodeMirror-linenumber {
+  color: #eee !important;
 }
 
 .CodeMirror-linenumber {
