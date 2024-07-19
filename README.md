@@ -1,3 +1,5 @@
+# 已于 2020 年停止更新，有不少问题没修复，请勿日常使用
+
 # Welcome to Clear Writer，这是一个沉浸式 Markdown 写作软件。
 
 ## 为什么编写 Clear Writer
